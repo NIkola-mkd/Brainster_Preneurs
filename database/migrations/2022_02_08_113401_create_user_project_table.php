@@ -16,6 +16,7 @@ class CreateUserProjectTable extends Migration
         Schema::create('user_project', function (Blueprint $table) {
             $table->bigInteger('project_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
+            $table->text('message');
             $table->string('status')->default('request');
 
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
