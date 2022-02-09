@@ -13,7 +13,7 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{old('name')}}">
                             </div>
@@ -23,7 +23,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="surname" name="surname" placeholder="Surame" value="{{old('surname')}}">
                             </div>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="mb-3">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{old('email')}}">
                             </div>
@@ -45,7 +45,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="mb-3">
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="{{old('password')}}">
                             </div>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-12 mt-1">
+                        <div class="col-12  mt-1">
                             <label for="biogrephy" class="classic text-secondary ">Biography</label>
                             <textarea class="form-control my-3" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt quis ante sed tempus. Cras imperdiet, quam ac fringilla venenatis, lectus nisl sagittis quam, eget tincidunt velit nibh at dui. Sed vel libero feugiat, luctus lacus at, fringilla sem. Nam tincidunt tortor velit, in porta dolor ullamcorper quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. 
 
