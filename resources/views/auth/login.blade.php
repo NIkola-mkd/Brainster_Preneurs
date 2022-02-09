@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="left-panel">
                         <h1> <span class="black-custom semi-bold">Brainster</span><span class="gray-custom semi-bold">Preneurs</span> </h1>
-                        <h2 class="classic my-5">Propel your ideas to life!</h2>
+                        <h2 class="classic my-lg-5">Propel your ideas to life!</h2>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     <div class="form-div ">
                         <h3 class="semi-bold ">Login</h3>
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-lg-10 col-12">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="mb-3">
@@ -41,7 +41,6 @@
                                         <span class="red-custom semi-bold my-1"> {{ $message }}</span>
                                         @enderror
                                     </div>
-
                                     <div class="col-10 offset-6">
                                         <button type="submit" class="btn px-5 bg-orange-custom text-white">Login</button>
                                     </div>
