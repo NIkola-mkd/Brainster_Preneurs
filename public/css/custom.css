@@ -1,0 +1,61 @@
+/* custom colors and fonts */
+
+/* colors */
+.green-custom {
+    color: #48695c;
+}
+
+.orange-custom {
+    color: #dd7f1e;
+}
+
+.gray-custom {
+    color: #949d99;
+}
+
+.white-custom {
+    color: #f6f6f6;
+}
+
+.black-custom {
+    color: #000000;
+}
+
+.red-custom {
+    color: #ff5757;
+}
+
+/* bg-colors */
+.bg-green-custom {
+    background-color: #48695c;
+}
+
+.bg-orange-custom {
+    background-color: #dd7f1e;
+}
+
+.bg-gray-custom {
+    background-color: #949d99;
+}
+
+.bg-white-custom {
+    background-color: #f6f6f6;
+}
+
+.bg-black-custom {
+    background-color: #000000;
+}
+
+.bg-red-custom {
+    background-color: #ff5757;
+}
+
+/* fonts */
+.semi-bold {
+    font-family: "montserrat-semi-bold", sans-serif;
+}
+
+.classic {
+    font-family: "Montserrat", sans-serif;
+}
+

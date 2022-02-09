@@ -14,7 +14,7 @@ class AlterTableUsersAddAcademyIdColumn extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('academy_id')->unsigned();
+            $table->bigInteger('academy_id')->unsigned()->nullable();
             $table->foreign('academy_id')->references('id')->on('academies')->onDelete('cascade');
         });
     }

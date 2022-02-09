@@ -1,0 +1,51 @@
+body {
+    background: url(/images/2.jpg?399c272b0019f8cded18362d240f3b12) no-repeat center center fixed;
+    background-size: cover;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+label {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+/* custom inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    border: none;
+    border-bottom: 5px solid black;
+    background-color: unset !important;
+}
+
+/* custom textarea */
+textarea {
+    border: none !important;
+    outline: none !important;
+    background-color: unset !important;
+    overflow: hidden;
+    resize: none;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    label {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 425px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    label {
+        font-size: 0.8rem;
+    }
+}
+
