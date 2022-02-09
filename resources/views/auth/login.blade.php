@@ -41,7 +41,7 @@
                                         <span class="red-custom semi-bold my-1"> {{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-10 offset-6">
+                                    <div class="d-grid gap-2 col-6 offset-6">
                                         <button type="submit" class="btn px-5 bg-orange-custom text-white">Login</button>
                                     </div>
                                 </form>

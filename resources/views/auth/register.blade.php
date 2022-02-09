@@ -1,77 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@section('css')
+<link href="{{ asset('css/register.css') }}" rel="stylesheet">
+@endsection
 
-<body>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@section('content')
+<div class="container-fluid">
+    <div class="container">
+        <h1 class="my-5 semi-bold black-custom">Register</h1>
+        <div class="row my-4">
+            <div class="col-6">
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{old('name')}}">
+                            </div>
+                            <div class="row mb-3">
+                                @error('name')
+                                <span class=" red-custom semi-bold mt-1"> {{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="surname" name="surname" placeholder="Surame" value="{{old('surname')}}">
+                            </div>
+                            <div class="row mb-3">
+                                @error('surname')
+                                <span class=" red-custom semi-bold mt-1"> {{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{old('email')}}">
+                            </div>
+                            <div class="row mb-3">
+                                @error('email')
+                                <span class=" red-custom semi-bold mt-1"> {{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="{{old('password')}}">
+                            </div>
+                            <div class="row mb-3">
+                                @error('password')
+                                <span class=" red-custom semi-bold mt-1"> {{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12 mt-1">
+                            <label for="biogrephy" class="classic text-secondary ">Biography</label>
+                            <textarea class="form-control my-3" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt quis ante sed tempus. Cras imperdiet, quam ac fringilla venenatis, lectus nisl sagittis quam, eget tincidunt velit nibh at dui. Sed vel libero feugiat, luctus lacus at, fringilla sem. Nam tincidunt tortor velit, in porta dolor ullamcorper quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. 
 
-        <!-- Name -->
-        <div>
-            <x-label for="name" :value="__('Name')" />
+" id="biography" name="biography">{{old('biography')}}</textarea>
+                            <div class="row mb-3">
+                                @error('biography')
+                                <span class=" red-custom semi-bold mt-1"> {{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="d-grid gap-2 col-6 ">
+                            <button type="submit" class="btn btn-lg bg-green-custom text-white">Register</button>
+                        </div>
+                    </div>
 
-            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-        </div>
-
-        <label for="surname" :value="__('Surname')" />
-
-        <input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus />
-        </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <label for="email" :value="__('Email')" />
-
-            <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <label for="password" :value="__('Password')" />
-
-            <input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="flex justify-center">
-            <div class="mb-3 xl:w-96">
-                <label for="biography" class="form-label inline-block mb-2 text-gray-700">Biography</label>
-                <textarea class="
-        form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-      " id="biography" rows="3" placeholder="Your message" name="biography"></textarea>
+                </form>
             </div>
         </div>
+    </div>
+</div>
+@endsection
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <button class="ml-4">
-                Register
-            </button>
-        </div>
-    </form>
-</body>
-
-</html>
+@section('js')
+<script>
+    $("textarea").each(function() {
+        this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+    }).on("input", function() {
+        this.style.height = "auto";
+        this.style.height = (this.scrollHeight) + "px";
+    });
+</script>
+@endsection
