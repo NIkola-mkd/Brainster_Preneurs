@@ -1,0 +1,39 @@
+body {
+    background: url("../images/bg-images/1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+span {
+    font-weight: bolder;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+/* position of the left panel (title) */
+.left-panel {
+    position: fixed;
+    width: 400px;
+    height: 200px;
+    left: 0%;
+    top: 35%;
+    margin-left: 5%;
+}
+
+/* position of the login form */
+.form-div {
+    position: fixed;
+    width: 400px;
+    height: 200px;
+    left: 30%;
+    top: 35%;
+    margin-left: 35%;
+}
