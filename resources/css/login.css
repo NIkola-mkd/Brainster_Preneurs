@@ -54,10 +54,29 @@ input[type="password"] {
 /* responsive */
 
 /* tablet */
-@media (max-width: 768px) {
+@media (max-width: 950px) {
     body {
         background-repeat: repeat-y;
     }
+    .left-panel {
+        width: 350px;
+        height: 200px;
+        left: 10%;
+        top: 10%;
+        position: fixed;
+    }
+
+    .form-div {
+        position: fixed;
+        width: 300px;
+        height: 200px;
+        left: 0%;
+        top: 40%;
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 768px) {
     h1 {
         font-size: 2rem;
     }
@@ -85,5 +104,56 @@ input[type="password"] {
         left: 0%;
         top: 40%;
         margin-left: 35%;
+    }
+}
+
+@media (max-width: 550px) {
+    .left-panel {
+        width: 350px;
+        height: 200px;
+        left: 10%;
+        top: 10%;
+        position: fixed;
+    }
+
+    .form-div {
+        position: fixed;
+        width: 300px;
+        height: 200px;
+        left: 0%;
+        top: 40%;
+        margin-left: 15%;
+    }
+}
+
+/* mobile */
+@media (max-width: 425px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .left-panel {
+        width: 150px;
+        height: 200px;
+        left: 0%;
+        top: 10%;
+        position: fixed;
+    }
+
+    .form-div {
+        position: fixed;
+        width: 300px;
+        height: 200px;
+        left: 0%;
+        top: 40%;
+        margin-left: 5%;
     }
 }
