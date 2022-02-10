@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>{{$title ?? 'Brainster Preneurs'}}</title>
+    <title>@yield('title')</title>
     <meta charset="utf-8" />
     <meta name="keywords" content="brainster preneurs, Brainster Preneurs, brainster" />
     <meta name="description" content="Оваа платформа служи за соработка помеѓу студентите на академиите
@@ -28,13 +28,12 @@
 
 <body>
 
-    @include('layouts.navbar')
 
     @yield('content')
 
     @include('layouts.footer')
 
-    @yield('js');
+    @yield('js')
 
 </body>
 

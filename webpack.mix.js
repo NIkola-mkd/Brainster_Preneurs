@@ -18,5 +18,7 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/login.css', 'public/css')
     .postCss('resources/css/custom.css', 'public/css')
     .postCss('resources/css/register.css', 'public/css')
+    .postCss('resources/css/profile.css', 'public/css')
+
 
 

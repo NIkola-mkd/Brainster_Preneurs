@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title','Brainster Preneurs')
+
 @section('css')
 <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 @endsection
