@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Field;
+use App\Models\Academy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,9 +16,9 @@ class Project extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function fields()
+    public function academies()
     {
-        return $this->belongsToMany(Field::class, 'project_field', 'project_id', 'field_id');
+        return $this->belongsToMany(Academy::class, 'project_academy', 'project_id', 'academy_id');
     }
 
     public function users()
