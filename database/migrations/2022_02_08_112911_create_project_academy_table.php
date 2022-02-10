@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectFieldTable extends Migration
+class CreateProjectAcademyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateProjectFieldTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_field', function (Blueprint $table) {
+        Schema::create('project_academy', function (Blueprint $table) {
             $table->bigInteger('project_id')->unsigned();
-            $table->bigInteger('field_id')->unsigned();
+            $table->bigInteger('academy_id')->unsigned();
 
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
+            $table->foreign('academy_id')->references('id')->on('academies')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateProjectFieldTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_field');
+        Schema::dropIfExists('project_academy');
     }
 }

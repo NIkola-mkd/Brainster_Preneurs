@@ -15,4 +15,10 @@ class Academy extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function projects()
+    {
+
+        return $this->belongsToMany(Project::class);
+    }
 }
