@@ -74,3 +74,10 @@
     height: 50px;
     border: white 4px solid;
 }
+
+.avatar-user {
+    border-radius: 50%;
+    border: white 4px solid;
+    width: 150;
+    height: 150;
+}

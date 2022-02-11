@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Skill;
+use App\Models\Academy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,7 +17,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('profile.my-profile');
+        $academies = Academy::all();
+
+        $skills = Skill::all();
+
+        $user = User::find(Auth::user()->id);
+
+        return view('profile/my-profile', compact('user', 'skills', 'academies'));
     }
 
     /**
