@@ -1,6 +1,5 @@
 body {
     background-color: #f6f6f6;
-    overflow-y: inherit;
 }
 h1 {
     font-size: 2rem;
@@ -45,8 +44,12 @@ textarea {
 }
 
 .skill-cards {
-    height: 15rem !important;
+    position: absolute;
+    height: 10rem !important;
     overflow-y: auto;
+    width: 50rem !important;
+    scrollbar-color: #dd7f1e white;
+    scrollbar-width: bolder;
 }
 
 .skill-cards::-webkit-scrollbar {
@@ -64,4 +67,51 @@ textarea {
 
 .font-size-skills {
     font-size: 0.9rem !important;
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    .skill-cards {
+        height: 5rem !important;
+        overflow-y: auto;
+        width: 35rem !important;
+        top: 600;
+    }
+}
+
+@media (max-width: 650px) {
+    body {
+        overflow-x: hidden;
+    }
+    .skill-cards {
+        height: 5rem !important;
+        overflow-y: auto;
+        width: 20rem !important;
+        top: 600;
+    }
+}
+@media (max-width: 425px) {
+    body {
+        overflow-x: hidden;
+    }
+    .skill-cards {
+        height: 5rem !important;
+        overflow-y: auto;
+        width: 15rem !important;
+        top: 590;
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        overflow-x: hidden;
+    }
+    .skill-cards {
+        height: 5rem !important;
+        overflow-y: auto;
+        width: 15rem !important;
+        top: 650;
+    }
 }

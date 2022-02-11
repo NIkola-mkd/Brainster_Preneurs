@@ -60,10 +60,10 @@
                 <div class="col-lg-7 col-12 offset-lg-1">
                     <h1>Skills</h1>
                     <div class="row mt-5">
-                        <div class="col-12 skill-cards h-50 d-inline-block">
+                        <div class="col-12 skill-cards mb-5 mb-lg-0">
                             @foreach($skills as $skill)
                             <input type="checkbox" class="btn-check" id="#{{$skill->name}}" autocomplete="off" name="skills[{{$skill->id}}]">
-                            <label class="font-size-skills btn-block m-1 btn btn-outline-success p-4 rounded" for="#{{$skill->name}}">{{$skill->name}}</label>
+                            <label class="font-size-skills  btn-block m-1 btn btn-outline-success p-4 rounded" for="#{{$skill->name}}">{{$skill->name}}</label>
                             @endforeach
                         </div>
                     </div>
@@ -71,7 +71,7 @@
             </div>
             <!-- biography and academies -->
             <div class="row mt-5">
-                <div class="col-lg-4 col-12">
+                <div class="col-lg-4 col-12 mt-5 mt-lg-0">
                     <div class="col-12  mt-1">
                         <label for="biogrephy" class="classic text-secondary fw-bold fs-4">Biography</label>
                         <textarea class="form-control my-3" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt quis ante sed tempus. Cras imperdiet, quam ac fringilla venenatis, lectus nisl sagittis quam, eget tincidunt velit nibh at dui. Sed vel libero feugiat, luctus lacus at, fringilla sem. Nam tincidunt tortor velit, in porta dolor ullamcorper quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. 

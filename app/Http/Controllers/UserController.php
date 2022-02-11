@@ -23,7 +23,7 @@ class UserController extends Controller
 
         $user = User::find(Auth::user()->id);
 
-        return view('profile/my-profile', compact('user', 'skills', 'academies'));
+        return view('profile.my-profile', compact('user', 'skills', 'academies'));
     }
 
     /**
