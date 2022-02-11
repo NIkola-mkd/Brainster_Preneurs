@@ -1,5 +1,6 @@
 body {
     background-color: #f6f6f6;
+    overflow-y: inherit;
 }
 h1 {
     font-size: 2rem;
@@ -12,14 +13,20 @@ input[type="text"] {
     background-color: unset !important;
 }
 
-.btn {
+textarea {
+    border: none !important;
+    outline: none !important;
+    background-color: unset !important;
+    overflow: hidden;
+    resize: none;
+    color: #949d99 !important;
+}
+
+.btn-outline-success {
     border: none !important;
     border-color: unset !important;
     background-color: white !important;
-}
-.btn-outline-success {
     color: black;
-    background-color: #f6f6f6;
 }
 
 .btn-outline-success:hover {
@@ -37,13 +44,9 @@ input[type="text"] {
     border-color: #48695c !important;
 }
 
-.btn-width {
-    width: 9rem !important;
-}
-
 .skill-cards {
     height: 15rem !important;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .skill-cards::-webkit-scrollbar {
@@ -60,5 +63,5 @@ input[type="text"] {
 }
 
 .font-size-skills {
-    font-size: 0.79rem !important;
+    font-size: 0.9rem !important;
 }
