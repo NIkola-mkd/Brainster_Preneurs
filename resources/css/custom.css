@@ -58,3 +58,48 @@
 .classic {
     font-family: "Montserrat", sans-serif;
 }
+
+/* custom fonts */
+.font-1rem {
+    font-size: 1.3rem;
+}
+
+.border-navbar {
+    border-bottom: #dd7f1e 2px solid;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: white 4px solid;
+}
+
+.avatar-user {
+    border-radius: 50%;
+    border: white 4px solid;
+    width: 150;
+    height: 150;
+}
+
+@media (max-width: 768px) {
+    .navbar-responsive {
+        font-size: 1.5rem;
+    }
+    .avatar-user {
+        border: white 3px solid;
+        width: 100;
+        height: 100;
+    }
+}
+
+@media (max-width: 425px) {
+    .navbar-responsive {
+        font-size: 1rem;
+    }
+    .avatar-user {
+        border: white 2px solid;
+        width: 80;
+        height: 80;
+    }
+}

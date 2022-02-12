@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 mix.disableNotifications();
 
@@ -13,10 +13,10 @@ mix.disableNotifications();
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css')
-    .postCss('resources/css/login.css', 'public/css')
-    .postCss('resources/css/custom.css', 'public/css')
-    .postCss('resources/css/register.css', 'public/css')
-
-
+mix.js("resources/js/app.js", "public/js")
+    .postCss("resources/css/app.css", "public/css")
+    .postCss("resources/css/login.css", "public/css")
+    .postCss("resources/css/custom.css", "public/css")
+    .postCss("resources/css/register.css", "public/css")
+    .postCss("resources/css/profile.css", "public/css")
+    .js("resources/js/textarea.js", "public/js");

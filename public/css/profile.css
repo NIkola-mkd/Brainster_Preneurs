@@ -1,0 +1,120 @@
+body {
+    background-color: #f6f6f6;
+}
+h1 {
+    font-size: 2rem;
+}
+
+input[type="email"],
+input[type="text"] {
+    border: none;
+    border-bottom: 5px solid black;
+    background-color: unset !important;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+textarea {
+    border: none !important;
+    outline: none !important;
+    background-color: unset !important;
+    overflow: hidden;
+    resize: none;
+    color: #949d99 !important;
+}
+
+.upload-image {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn-outline-success {
+    border: none !important;
+    border-color: unset !important;
+    background-color: white !important;
+    color: black;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #48695c !important;
+    border-color: #48695c !important;
+}
+.btn-check:active + .btn-outline-success,
+.btn-check:checked + .btn-outline-success,
+.btn-outline-success.active,
+.btn-outline-success.dropdown-toggle.show,
+.btn-outline-success:active {
+    color: #fff;
+    background-color: #48695c !important;
+    border-color: #48695c !important;
+}
+
+.skill-cards {
+    position: absolute;
+    height: 10rem !important;
+    overflow-y: auto;
+    width: 50rem !important;
+    scrollbar-color: #dd7f1e white;
+    scrollbar-width: bolder;
+}
+
+.skill-cards::-webkit-scrollbar {
+    width: 1rem;
+}
+
+.skill-cards::-webkit-scrollbar-track {
+    background: unset;
+    border: 1px solid #dd7f1e;
+}
+
+.skill-cards::-webkit-scrollbar-thumb {
+    background-color: #dd7f1e;
+}
+
+.font-size-skills {
+    font-size: 0.9rem !important;
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    .skill-cards {
+        height: 10rem !important;
+        overflow-y: auto;
+        width: 35rem !important;
+        top: 580;
+    }
+}
+
+@media (max-width: 425px) {
+    body {
+        overflow-x: hidden;
+    }
+    .skill-cards {
+        /* height: 8rem !important; */
+        overflow-y: auto;
+        width: 15rem !important;
+        top: 610;
+    }
+    .font-size-skills {
+        font-size: 0.7rem !important;
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        overflow-x: hidden;
+    }
+    .skill-cards {
+        /* height: 5rem !important; */
+        overflow-y: auto;
+        width: 15rem !important;
+        top: 670;
+    }
+}
+
