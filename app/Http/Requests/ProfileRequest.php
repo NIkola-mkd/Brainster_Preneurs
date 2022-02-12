@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileRequest extends FormRequest
 {
@@ -23,16 +24,30 @@ class ProfileRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email'],
-            'image' => ['required', 'mimes:jpeg,png,jpg', 'max:2048'],
-            'biography' => ['required'],
-            'skills' => ['required', 'min:5', 'max:10'],
-            'academy' => ['required']
+        if (Auth::user()->image == null) {
+            return [
+                'image' => ['required', 'mimes:jpeg,png,jpg', 'max:2048'],
+                'name' => ['required', 'string', 'max:255'],
+                'surname' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email'],
+                'image' => ['mimes:jpeg,png,jpg', 'max:2048'],
+                'biography' => ['required'],
+                'skills' => ['required', 'min:5', 'max:10'],
+                'academy' => ['required']
 
-        ];
+            ];
+        } else {
+
+            return [
+                'name' => ['required', 'string', 'max:255'],
+                'surname' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email'],
+                'image' => ['mimes:jpeg,png,jpg', 'max:2048'],
+                'biography' => ['required'],
+                'skills' => ['required', 'min:5', 'max:10'],
+                'academy' => ['required']
+            ];
+        }
     }
     public function messages()
     {

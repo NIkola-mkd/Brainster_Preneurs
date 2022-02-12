@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -83,23 +84,30 @@ class UserController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-        // get image random name
-        $rand = Str::random(100);
-        $img = $rand . '.' . $request->image->extension();
-        $request->image->move(public_path('avatars'), $img);
-
         $user = User::find(Auth::user()->id);
 
+        if ($request->hasFile('image')) {
+
+            $directory = 'avatars/' . $user->image;
+            if (File::exists($directory)) {
+
+                File::delete($directory);
+            }
+            // get image random name
+            $rand = Str::random(100);
+            $img = $rand . '.' . $request->image->extension();
+            $request->image->move(public_path('avatars'), $img);
+            $user->image = $img;
+        }
         // update user table
         $user->name = $request->name;
         $user->surname = $request->surname;
         $user->email = $request->email;
-        $user->image = $img;
         $user->biography = $request->biography;
         $user->academy_id = $request->academy;
 
-        // attach skills to pivot table 
-        $user->skills()->attach($request->skills);
+        // attach skills to pivot table (user_skill table)
+        $user->skills()->sync($request->skills);
 
         $user->save();
 
