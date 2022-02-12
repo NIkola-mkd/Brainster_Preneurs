@@ -87,7 +87,7 @@ textarea {
         height: 10rem !important;
         overflow-y: auto;
         width: 35rem !important;
-        top: 560;
+        top: 580;
     }
 }
 
@@ -99,7 +99,10 @@ textarea {
         /* height: 8rem !important; */
         overflow-y: auto;
         width: 15rem !important;
-        top: 590;
+        top: 610;
+    }
+    .font-size-skills {
+        font-size: 0.7rem !important;
     }
 }
 
@@ -111,6 +114,6 @@ textarea {
         /* height: 5rem !important; */
         overflow-y: auto;
         width: 15rem !important;
-        top: 650;
+        top: 670;
     }
 }

@@ -139,23 +139,18 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('js/textarea.js') }}"></script>
 <script>
-    $("textarea").each(function() {
-        this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
-    }).on("input", function() {
-        this.style.height = "auto";
-        this.style.height = (this.scrollHeight) + "px";
-    });
-
+    // show image on upload
     function previewImage(input) {
-        let avatar = $("input[type=file]").get(0).files[0];
+        var avatar = $("input[type=file]").get(0).files[0];
 
         if (avatar) {
-            let reader = new FileReader();
+            var reader = new FileReader();
 
             reader.onload = function() {
                 $("#previewAvatar").attr("src", reader.result);
-            }
+            };
 
             reader.readAsDataURL(avatar);
         }
