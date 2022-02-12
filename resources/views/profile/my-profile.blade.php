@@ -80,7 +80,7 @@
                     <div class="row mt-5">
                         <div class="col-12 skill-cards mb-5 mb-lg-0">
                             @foreach($skills as $skill)
-                            <input type="checkbox" class="btn-check" id="#{{$skill->name}}" autocomplete="off" name="skills[]" value="{{$skill->id}}">
+                            <input type="checkbox" class="btn-check" id="#{{$skill->name}}" autocomplete="off" name="skills[]" value="{{$skill->id}}" {{ in_array($skill->id,$user_skills) ?'checked':'' }}>
                             <label class="font-size-skills  btn-block m-1 btn btn-outline-success p-4 rounded" for="#{{$skill->name}}">{{$skill->name}}</label>
                             @endforeach
                         </div>

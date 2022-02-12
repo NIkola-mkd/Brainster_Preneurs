@@ -26,8 +26,7 @@ class UserController extends Controller
 
         $user = User::find(Auth::user()->id);
 
-        $user_skills = $user->skills()->get();
-
+        $user_skills = $user->skills()->pluck('skill_id')->toArray();
 
         return view('profile.my-profile', compact('user', 'skills', 'academies', 'user_skills'));
     }
