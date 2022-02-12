@@ -11,7 +11,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="mt-5 mx-5">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <!-- profile and skills -->
             <div class="row">
                 <div class="col-lg-4 col-12">
@@ -19,8 +19,11 @@
                     <div class="row mt-5">
                         <div class="col-lg-6 col-12">
                             @if($user->image == null)
-                            <img class="avatar-user img-thumbnail" src="{{ asset('avatars/default_avatar.png') }}">
-                            <figcaption class="gray-custom my-2">Click here to upload an image</figcaption>
+                            <img id="previewAvatar" class="avatar-user img-thumbnail" src="{{ asset('avatars/default_avatar.png') }}">
+                            <label for="avatar" class="gray-custom mt-lg-1 my-3 upload-image">
+                                Click here to upload an image
+                            </label>
+                            <input id="avatar" type="file" name="image" onchange="previewImage(this);">
                             @endif
                         </div>
                         <div class="col-lg-6 col-12">
@@ -72,7 +75,7 @@
             <!-- biography and academies -->
             <div class="row mt-5">
                 <div class="col-lg-4 col-12 mt-5 mt-lg-0">
-                    <div class="col-12  mt-1">
+                    <div class="col-12  mt-lg-1 mt-5">
                         <label for="biogrephy" class="classic text-secondary fw-bold fs-4">Biography</label>
                         <textarea class="form-control my-3" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt quis ante sed tempus. Cras imperdiet, quam ac fringilla venenatis, lectus nisl sagittis quam, eget tincidunt velit nibh at dui. Sed vel libero feugiat, luctus lacus at, fringilla sem. Nam tincidunt tortor velit, in porta dolor ullamcorper quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. 
 
@@ -118,5 +121,19 @@
         this.style.height = "auto";
         this.style.height = (this.scrollHeight) + "px";
     });
+
+    function previewImage(input) {
+        let avatar = $("input[type=file]").get(0).files[0];
+
+        if (avatar) {
+            let reader = new FileReader();
+
+            reader.onload = function() {
+                $("#previewAvatar").attr("src", reader.result);
+            }
+
+            reader.readAsDataURL(avatar);
+        }
+    }
 </script>
 @endsection

@@ -12,6 +12,10 @@ input[type="text"] {
     background-color: unset !important;
 }
 
+input[type="file"] {
+    display: none;
+}
+
 textarea {
     border: none !important;
     outline: none !important;
@@ -19,6 +23,12 @@ textarea {
     overflow: hidden;
     resize: none;
     color: #949d99 !important;
+}
+
+.upload-image {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .btn-outline-success {
@@ -74,30 +84,19 @@ textarea {
         overflow-x: hidden;
     }
     .skill-cards {
-        height: 5rem !important;
+        height: 10rem !important;
         overflow-y: auto;
         width: 35rem !important;
-        top: 600;
+        top: 560;
     }
 }
 
-@media (max-width: 650px) {
-    body {
-        overflow-x: hidden;
-    }
-    .skill-cards {
-        height: 5rem !important;
-        overflow-y: auto;
-        width: 20rem !important;
-        top: 600;
-    }
-}
 @media (max-width: 425px) {
     body {
         overflow-x: hidden;
     }
     .skill-cards {
-        height: 5rem !important;
+        /* height: 8rem !important; */
         overflow-y: auto;
         width: 15rem !important;
         top: 590;
@@ -109,7 +108,7 @@ textarea {
         overflow-x: hidden;
     }
     .skill-cards {
-        height: 5rem !important;
+        /* height: 5rem !important; */
         overflow-y: auto;
         width: 15rem !important;
         top: 650;
