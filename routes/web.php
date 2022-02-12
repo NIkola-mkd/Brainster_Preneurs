@@ -25,3 +25,4 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/profile/my-profile', [UserController::class, 'index'])->middleware(['auth']);
+Route::post('/profile/profile-update', [UserController::class, 'update'])->middleware(['auth'])->name('profile-update');

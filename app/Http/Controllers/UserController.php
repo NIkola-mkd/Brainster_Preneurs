@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\Academy;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileRequest;
 
 class UserController extends Controller
 {
@@ -23,7 +25,10 @@ class UserController extends Controller
 
         $user = User::find(Auth::user()->id);
 
-        return view('profile.my-profile', compact('user', 'skills', 'academies'));
+        $user_skills = $user->skills()->get();
+
+
+        return view('profile.my-profile', compact('user', 'skills', 'academies', 'user_skills'));
     }
 
     /**
@@ -76,9 +81,29 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProfileRequest $request)
     {
-        //
+        // get image random name
+        $rand = Str::random(100);
+        $img = $rand . '.' . $request->image->extension();
+        $request->image->move(public_path('avatars'), $img);
+
+        $user = User::find(Auth::user()->id);
+
+        // update user table
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->image = $img;
+        $user->biography = $request->biography;
+        $user->academy_id = $request->academy;
+
+        // attach skills to pivot table 
+        $user->skills()->attach($request->skills);
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated');
     }
 
     /**
