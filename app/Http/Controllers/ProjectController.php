@@ -6,6 +6,8 @@ use App\Models\Academy;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use function GuzzleHttp\Promise\all;
+use function Ramsey\Uuid\v1;
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProjectRequest;
 
@@ -74,7 +76,17 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        $academies = Academy::all();
+
+        $author = Auth::user()->id;
+
+        if ($project->user_id != $author)
+            abort(404);
+
+        $project_academy = $project->academies()->pluck('academy_id')->toArray();
+
+        return view('projects.edit-project', compact('project', 'academies', 'project_academy'));
     }
 
     /**
@@ -84,9 +96,18 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectRequest $request, $id)
     {
-        //
+        $project = Project::find($id);
+
+        $project->title = $request->title;
+        $project->description = $request->description;
+
+        if ($project->save()) {
+            $project->academies()->sync($request->academies);
+            return redirect()->route('my-projects')->with('success', 'Project edited! ');
+        }
+        return redirect()->back();
     }
 
     /**
