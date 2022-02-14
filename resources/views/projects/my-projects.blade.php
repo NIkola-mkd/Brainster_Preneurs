@@ -10,6 +10,17 @@
 
 @section('content')
 <div class="container-fluid">
+    <div class="container mt-5">
+        <div class="col-6 offset-3">
+            @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
     <div class="mx-3">
         <div class="mt-5">
             <h5>Have a new idea to make the world better?</h5>
