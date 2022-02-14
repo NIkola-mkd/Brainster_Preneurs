@@ -19,4 +19,7 @@ mix.js("resources/js/app.js", "public/js")
     .postCss("resources/css/custom.css", "public/css")
     .postCss("resources/css/register.css", "public/css")
     .postCss("resources/css/profile.css", "public/css")
+    .postCss("resources/css/dashboard.css", "public/css")
+    .postCss("resources/css/my-projects.css", "public/css")
+    .postCss("resources/css/create_edit_projects.css", "public/css")
     .js("resources/js/textarea.js", "public/js");

@@ -5,5 +5,8 @@
     "/css/profile.css": "/css/profile.css",
     "/css/register.css": "/css/register.css",
     "/css/custom.css": "/css/custom.css",
-    "/css/login.css": "/css/login.css"
+    "/css/login.css": "/css/login.css",
+    "/css/create_edit_projects.css": "/css/create_edit_projects.css",
+    "/css/my-projects.css": "/css/my-projects.css",
+    "/css/dashboard.css": "/css/dashboard.css"
 }

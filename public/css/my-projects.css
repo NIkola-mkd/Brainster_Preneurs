@@ -1,0 +1,11 @@
+body {
+    background: url(/images/4.jpg?ae1f99c5154f4ad9beeba87465906f9f) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.add-new-button {
+    cursor: pointer;
+    width: 40;
+    height: 40;
+}
+
