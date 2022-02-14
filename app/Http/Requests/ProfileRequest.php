@@ -30,7 +30,6 @@ class ProfileRequest extends FormRequest
                 'name' => ['required', 'string', 'max:255'],
                 'surname' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email'],
-                'image' => ['mimes:jpeg,png,jpg', 'max:2048'],
                 'biography' => ['required'],
                 'skills' => ['required', 'min:5', 'max:10'],
                 'academy' => ['required']

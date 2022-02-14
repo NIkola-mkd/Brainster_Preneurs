@@ -1,0 +1,13 @@
+body {
+    background: url("../bg-images/4.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.add-new-button {
+    cursor: pointer;
+    width: 40;
+    height: 40;
+}
