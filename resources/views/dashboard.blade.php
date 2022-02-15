@@ -23,6 +23,8 @@
         </div>
     </div>
 </div>
+
 @endif
 <!-- end alert msg -->
+
 @endsection

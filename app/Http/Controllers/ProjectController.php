@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Academy;
 use App\Models\Project;
-use Illuminate\Http\Request;
-use function GuzzleHttp\Promise\all;
 use function Ramsey\Uuid\v1;
+use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+use function GuzzleHttp\Promise\all;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProjectRequest;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProjectController extends Controller
 {
@@ -20,7 +23,23 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('projects.my-projects');
+
+        $projects = Project::where('projects.user_id', Auth::user()->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $author = User::where('users.id', Auth::user()->id)
+            ->join('academies', 'academies.id', 'users.academy_id')
+            ->select('users.name as name', 'academies.id', 'users.academy_id', 'users.surname as surname', 'users.image as avatar', 'academies.profession as profession')
+            ->get();
+
+
+        return view('projects.my-projects', compact('projects', 'author'));
+    }
+
+    public function all()
+    {
+        return view('dashboard');
     }
 
     /**

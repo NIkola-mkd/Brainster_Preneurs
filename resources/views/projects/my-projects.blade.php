@@ -31,6 +31,53 @@
     </div>
 </div>
 <div class="container-fluid">
+    <div class="container">
+        <div class="col-6">
+            <table class="table col-10">
+                <thead>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Descriptuon
+                    </th>
+                    <th>
+                        Academies
+                    </th>
+                    <th>
+                        Author
+                    </th>
+                    <th>
+                        Profession
+                    </th>
+                    <th>Avatar</th>
+                    <th>Applications</th>
+                </thead>
+                <tbody>
+                    @foreach($projects as $project)
+                    <tr>
+                        <td>
+                            {{$project->title}}
+                        </td>
+                        <td>
+                            {{$project->description}}
+                        </td>
+                        <td>
+                            @foreach($project->academies as $academy)
+                            <p>{{$academy->name}}</p>
+                            @endforeach
+                        </td>
+                        @foreach($author as $a)
+                        <td>{{$a->name}} {{$a->surname}}</td>
+                        <td>{{$a->profession}}</td>
+                        <td></td>
+                        @endforeach
 
+                        <td>{{$project->users->count()}}</td>
+
+                        @endforeach
+            </table>
+        </div>
+    </div>
 </div>
 @endsection
