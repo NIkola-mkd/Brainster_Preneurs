@@ -59,6 +59,16 @@
     font-family: "Montserrat", sans-serif;
 }
 
+.semi-bold-bolder {
+    font-family: "montserrat-semi-bold", sans-serif;
+    font-weight: bold;
+}
+
+.classic-bold {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
 /* custom fonts */
 .font-1rem {
     font-size: 1.3rem;

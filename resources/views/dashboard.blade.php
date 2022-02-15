@@ -26,5 +26,4 @@
 
 @endif
 <!-- end alert msg -->
-
 @endsection
