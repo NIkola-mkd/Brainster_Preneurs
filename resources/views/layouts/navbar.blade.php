@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light border-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light border-navbar bg-white-custom ">
         <div class="container-fluid mx-5">
             <a class="navbar-brand" href="/dashboard">
                 <h1 class="navbar-responsive"> <span class="black-custom semi-bold">Brainster</span><span class="gray-custom semi-bold">Preneurs</span> </h1>
