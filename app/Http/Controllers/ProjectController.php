@@ -100,7 +100,7 @@ class ProjectController extends Controller
 
         $author = Auth::user()->id;
 
-        if ($project->user_id != $author)
+        if (($project->user_id != $author))
             abort(404);
 
         $project_academy = $project->academies()->pluck('academy_id')->toArray();

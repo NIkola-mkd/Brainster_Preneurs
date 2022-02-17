@@ -77,3 +77,45 @@ a:hover {
 .morelink {
     display: block;
 }
+
+.assembled {
+    width: 50;
+    height: 50;
+    position: absolute;
+    top: 190;
+    right: 70;
+}
+
+.my-7 {
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+}
+
+.action-icon {
+    width: 20;
+    height: 20;
+}
+
+.edit-delete {
+    position: absolute;
+    top: 80;
+    right: -20;
+    display: none;
+}
+
+.card:hover .edit-delete {
+    display: block;
+}
+
+@media (max-width: 375px) {
+    .project-image {
+        border-radius: 50%;
+        width: 50;
+        height: 50;
+        border: white 4px solid;
+    }
+
+    .font-applicants {
+        font-size: 0.5rem;
+    }
+}
