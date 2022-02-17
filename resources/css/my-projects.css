@@ -6,6 +6,10 @@ body {
     background-size: cover;
 }
 
+a:hover {
+    color: #dd7f1e;
+}
+
 .add-new-button {
     cursor: pointer;
     width: 40;
@@ -64,4 +68,11 @@ body {
 
 .card-footer {
     border-top: none !important;
+}
+
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
 }

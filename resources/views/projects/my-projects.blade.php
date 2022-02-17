@@ -57,7 +57,7 @@
                     <div class="col-8">
                         <div class="card-body">
                             <h5 class="card-title classic-bold">{{$project->title}}</h5>
-                            <p class="classic mt-3">{{$project->description}}</p>
+                            <p class="classic mt-3 showMore">{{$project->description}}</p>
                             <button class="applicants btn btn-outline-success p-1">
                                 <span class="font-applicants classic-bold">{{$project->users()->count()}}</span>
                                 <p class="font-applicants classic">applicants</p>
@@ -87,4 +87,9 @@
         @endforeach
     </div>
 </div>
+@endsection
+
+
+@section('js')
+<script src="{{asset('js/readMoreLess.js')}}"></script>
 @endsection
