@@ -23,7 +23,36 @@
         </div>
     </div>
 </div>
-
 @endif
 <!-- end alert msg -->
+
+<!-- projects -->
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 ms-5 border border-success">
+                    <h5 class="semi-bold-bolder my-4">In what field can you been amazing?</h5>
+                    <form action="" id="category">
+                        <div class="col-2 filter">
+                            <input type="radio" class="btn-check" id="#all" autocomplete="off" name="academies[]" value="all" checked>
+                            <label class="font-size-skills btn-block m-1 btn btn-outline-success rounded text-wrap filter-width" for="all">All</label>
+                            @foreach($academies as $academy)
+                            <input type="radio" class="btn-check" id="#{{$academy->name}}" autocomplete="off" name="academies[]" value="{{$academy->id}}">
+                            <label class="font-size-skills btn-block m-1 btn btn-outline-success text-wrap filter-width rounded" for="#{{$academy->name}}">{{$academy->name}}</label>
+                            @endforeach
+                        </div>
+                    </form>
+                </div>
+                <div class="col-7 border border-danger" id="projectsCards">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+
+@section('js')
+<script src="{{asset('js/ajax.js')}}"></script>
 @endsection

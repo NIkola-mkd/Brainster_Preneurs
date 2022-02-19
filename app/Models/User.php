@@ -38,6 +38,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'email'
     ];
 
     /**
@@ -51,12 +52,12 @@ class User extends Authenticatable
 
     public function academies()
     {
-        return $this->belongsTo(Academy::class);
+        return $this->belongsTo(Academy::class, 'academy_id');
     }
 
     public function projects()
     {
-        return $this->hasMany(Project::class);
+        return $this->hasMany(Project::class, 'project_id');
     }
 
     public function skills()

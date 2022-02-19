@@ -39,7 +39,15 @@ class ProjectController extends Controller
 
     public function all()
     {
-        return view('dashboard');
+        $academies = Academy::all();
+
+        $projects = Project::with('academies', 'author')
+            ->withCount('users')
+            ->where('projects.user_id', '!=', 1)
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+
+        return view('dashboard', compact('academies', 'projects'));
     }
 
     /**

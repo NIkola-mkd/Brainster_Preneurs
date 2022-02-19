@@ -5,3 +5,90 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+
+.card-image {
+    position: absolute;
+    top: -45 !important;
+}
+
+.project-image {
+    border-radius: 50%;
+    width: 70;
+    height: 70;
+    border: white 4px solid;
+}
+
+.academies-circles {
+    border-radius: 250px 250px 0 0;
+    font-size: 0.7rem;
+}
+
+.applicants {
+    border-radius: 50%;
+    position: absolute;
+    top: -40;
+    right: -30;
+}
+
+.btn-outline-success {
+    border: none !important;
+    border-color: unset !important;
+    background-color: white !important;
+    color: black;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #48695c !important;
+    border-color: #48695c !important;
+}
+.btn-check:active + .btn-outline-success,
+.btn-check:checked + .btn-outline-success,
+.btn-outline-success.active,
+.btn-outline-success.dropdown-toggle.show,
+.btn-outline-success:active {
+    color: #fff;
+    background-color: #48695c !important;
+    border-color: #48695c !important;
+}
+
+.font-applicants {
+    font-size: 0.8rem;
+}
+
+.card-footer {
+    border-top: none !important;
+}
+
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+
+.assembled {
+    width: 50;
+    height: 50;
+    position: absolute;
+    top: 190;
+    right: 70;
+}
+
+.my-7 {
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+}
+
+.filter-width {
+    width: 120;
+    height: 100;
+}
+.btn-applicants {
+    background-color: #48695c !important;
+    color: white !important;
+}
+
+.filter {
+    position: fixed;
+}
