@@ -77,7 +77,6 @@ body {
 
 .my-7 {
     margin-top: 7rem;
-    margin-bottom: 7rem;
 }
 
 .filter-width {
@@ -91,4 +90,16 @@ body {
 
 .filter {
     position: fixed;
+}
+
+.btn-success {
+    background-color: #48695c !important;
+    color: white !important;
+}
+
+.btn-success.disabled,
+.btn-success:disabled {
+    background-color: #949d99 !important;
+    color: white !important;
+    cursor: unset !important;
 }

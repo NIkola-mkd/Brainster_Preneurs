@@ -1,12 +1,26 @@
 $(function () {
-    var authcheck = $('meta[name="auth-check"]').attr("content");
-
     $.ajax({
         url: "/api/allProjects",
         method: "GET",
         success: function (data) {
-            console.log(data);
-            projects(data);
+            var url = data.links[1].url.substr(-23);
+
+            paginate(url);
+
+            $(document).on("click", "#next", function (event) {
+                $(".card").hide();
+                event.preventDefault();
+                for (let i = 2; i < data.links.length - 1; i++) {
+                    url = data.links[i].url.substr(-23);
+                }
+            });
+
+            $(document).on("click", "#prev", function (event) {
+                $(".card").hide();
+                event.preventDefault();
+                url = data.links[1].url.substr(-23);
+                paginate(url);
+            });
         },
         error: function (error) {
             console.log("error: ", error);
@@ -15,6 +29,8 @@ $(function () {
 });
 
 function projects(data) {
+    var authcheck = $('meta[name="auth-check"]').attr("content");
+    var authcomplete = $('meta[name="auth-completed"]').attr("content");
     for (let i = 0; i < data.data.length; i++) {
         let card =
             `<div class="col-lg-12 col-md-10 col-12 my-7 ">
@@ -67,36 +83,73 @@ function projects(data) {
                                 <div class="col-6 text-center">
                                     <span class="gray-custom semi-bold-bolder text-center">I'm looking for</span>
                                 </div>
-                                <div class="col-12">`;
+                                <div class="col-12 mt-2">`;
 
         for (let j = 0; j < data.data[i].academies.length; j++) {
             card +=
                 `
-                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-1">` +
+                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-3">` +
                 data.data[i].academies[j].name +
                 `</span>
                                `;
         }
-
-        if (data.data[i].users_count > 0) {
-            // console.log("ulegna");
-
-            for (let k = 0; k < data.data[i].users.length; k++) {
-                console.log("num: " + i + " " + data.data[i].users[k].id);
-            }
-
-            // card += `<div class="col-4">
-            //                 <img src="custom_icons/assembled.png" class="assembled " alt="">
-            //             </div>`;
-        }
-        card += ` </div>
-                
+        var btn = `  </div>
+                        </div>
+                        </div>
+                        <div class="col-4 mt-5 ">
+                           <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
+                                <button id = 'apply' class = 'btn btn-success px-5'>I AM IN</button>
                             </div>
-                        </div></div>
+                        </div>
+                         </div>             
                 </div>
             </div>
         </div>`;
+        if (authcomplete == "") {
+            btn = `  </div>
+                        </div>
+                        </div>
+                        <div class="col-4 mt-5 ">
+                           <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
+                                <button id = 'apply' class = 'btn btn-success px-5' disabled>I AM IN</button>
+                            </div>
+                        </div>
+                         </div>             
+                </div>
+            </div>
+        </div>`;
+        } else if (data.data[i].users_count > 0) {
+            for (let k = 0; k < data.data[i].users.length; k++) {
+                if (authcheck == data.data[i].users[k].id) {
+                    btn = `  </div>
+                        </div>
+                        </div>
+                        <div class="col-4 mt-5 ">
+                           <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
+                                <button id = 'apply' class = 'btn btn-success px-5' disabled>I AM IN</button>
+                            </div>
+                        </div>
+                         </div>             
+                </div>
+            </div>
+        </div>`;
+                }
+            }
+        }
 
-        $("#projectsCards").append(card);
+        $("#projectsCards").append(card + btn);
     }
+}
+
+function paginate(url) {
+    $.ajax({
+        url: url,
+        method: "GET",
+        success: function (data) {
+            projects(data);
+        },
+        error: function (error) {
+            console.log("error: ", error);
+        },
+    });
 }

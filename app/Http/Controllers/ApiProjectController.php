@@ -20,7 +20,7 @@ class ApiProjectController extends Controller
         // if ($request->ajax() == 'all') {
         $projects = Project::with('academies', 'author', 'users')
             ->withCount('users')
-            ->where('projects.user_id', '!=', 1)
+            ->where('projects.user_id', '!=', Auth::user()->id)
             ->where('projects.is_assembled', 0)
             ->orderBy('created_at', 'desc')
             ->paginate(3);

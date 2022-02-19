@@ -75,15 +75,15 @@
                     </div>
                 </div>
                 <div class="card-footer bg-white">
-                    <div class="row g-0">
+                    <div class="row g-0 mb-1">
                         <div class="col-lg-8 col-md-7 col-12 ">
                             <div class="row mt-4 mx-auto">
                                 <div class="col-6 text-center">
                                     <span class="gray-custom semi-bold-bolder text-center">I'm looking for</span>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mt-2">
                                     @foreach($project->academies as $academy)
-                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-1">{{$academy->name}}</span>
+                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-3">{{$academy->name}}</span>
                                     @endforeach
                                 </div>
                             </div>

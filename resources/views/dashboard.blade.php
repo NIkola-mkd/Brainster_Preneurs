@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('meta')
+<meta name="auth-check" content="{{ Auth::user()->id }}">
+<meta name="auth-completed" content="{{ Auth::user()->image }}">
+@endsection
+
 @section('css')
 <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 @endsection
@@ -14,7 +19,7 @@
 <div class="container-fluid">
     <div class="container mt-5">
         <div class="row">
-            <div class="col-6 offset-3">
+            <div class="col-8 mx-auto">
                 <div class="alert alert-light text-center" role="alert">
                     <h3 class="classic black-custom fw-bolder">Welcome!</h3>
                     <p class="semi-bold black-custom fw-bold"> Please finish up your profile on the following <a href="profile/my-profile" class="alert-link">link</a>, so that you can enjoy all our features.</p>
@@ -47,9 +52,27 @@
                 <div class="col-7 border border-danger" id="projectsCards">
                 </div>
             </div>
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="container">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item ">
+                                    <a class="page-link" href="" id="prev">Previous</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="" id="next">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
 @endsection
 
 

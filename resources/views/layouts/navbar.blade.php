@@ -25,7 +25,7 @@
                 </ul>
                 @endif
                 @if(Auth::user()->image == null)
-                <a class="nav-link " href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/default_avatar.png') }}" alt="..."></a>
+                <a class="nav-link d-grid gap-2 d-md-flex justify-content-md-end" href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/default_avatar.png') }}" alt="..."></a>
                 @else
                 <a class="nav-link " href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/' . Auth::user()->image) }}" alt="..."></a>
                 @endif
