@@ -103,3 +103,14 @@ body {
     color: white !important;
     cursor: unset !important;
 }
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #dd7f1e;
+    border-color: #dd7f1e;
+}
+
+.page-link {
+    color: #dd7f1e;
+}

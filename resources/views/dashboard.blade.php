@@ -36,11 +36,11 @@
     <div class="row">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4 ms-5 border border-success">
+                <div class="col-4 ms-5">
                     <h5 class="semi-bold-bolder my-4">In what field can you been amazing?</h5>
                     <form action="" id="category">
                         <div class="col-2 filter">
-                            <input type="radio" class="btn-check" id="#all" autocomplete="off" name="academies[]" value="all" checked>
+                            <input type="radio" class="btn-check " id="#all" autocomplete="off" name="academies[]" value="all" checked>
                             <label class="font-size-skills btn-block m-1 btn btn-outline-success rounded text-wrap filter-width" for="all">All</label>
                             @foreach($academies as $academy)
                             <input type="radio" class="btn-check" id="#{{$academy->name}}" autocomplete="off" name="academies[]" value="{{$academy->id}}">
@@ -49,22 +49,15 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-7 border border-danger" id="projectsCards">
+                <div class="col-7" id="projectsCards">
                 </div>
             </div>
             <div class="row">
                 <div class="container-fluid">
-                    <div class="container">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item ">
-                                    <a class="page-link" href="" id="prev">Previous</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="" id="next">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
+                    <div class="container mt-5">
+                        <div class="col-6 offset-5" id="pagination">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -77,5 +70,7 @@
 
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"> </script>
 <script src="{{asset('js/ajax.js')}}"></script>
+<script src="{{asset('js/readMoreLess.js')}}"></script>
 @endsection

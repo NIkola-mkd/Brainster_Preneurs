@@ -3,7 +3,7 @@ var __webpack_exports__ = {};
 /*!**************************************!*\
   !*** ./resources/js/readMoreLess.js ***!
   \**************************************/
-$(document).ready(function () {
+$(function () {
   var show = 70;
   var moretext = "show more ";
   var lesstext = "show less";

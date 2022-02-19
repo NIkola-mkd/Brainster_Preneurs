@@ -105,5 +105,4 @@
 
 @section('js')
 <script src="{{asset('js/readMoreLess.js')}}"></script>
-<script src="{{asset('js/onHover.js')}}"></script>
 @endsection

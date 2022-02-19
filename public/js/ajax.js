@@ -8,22 +8,22 @@ $(function () {
     url: "/api/allProjects",
     method: "GET",
     success: function success(data) {
-      var url = data.links[1].url.substr(-23);
-      paginate(url);
-      $(document).on("click", "#next", function (event) {
-        $(".card").hide();
-        event.preventDefault();
+      var totalPages = data.last_page;
 
-        for (var i = 2; i < data.links.length - 1; i++) {
-          url = data.links[i].url.substr(-23);
-        }
-      });
-      $(document).on("click", "#prev", function (event) {
-        $(".card").hide();
-        event.preventDefault();
-        url = data.links[1].url.substr(-23);
-        paginate(url);
-      });
+      if (totalPages == 1) {
+        paginate(totalPages);
+      } else {
+        $("#pagination").twbsPagination({
+          totalPages: totalPages,
+          visiblePages: 3,
+          next: "Next",
+          prev: "Prev",
+          onPageClick: function onPageClick(event, page) {
+            $(".card").hide();
+            paginate(page);
+          }
+        });
+      }
     },
     error: function error(_error) {
       console.log("error: ", _error);
@@ -58,9 +58,9 @@ function projects(data) {
   }
 }
 
-function paginate(url) {
+function paginate(page) {
   $.ajax({
-    url: url,
+    url: "/api/allProjects?page=" + page,
     method: "GET",
     success: function success(data) {
       projects(data);

@@ -23,7 +23,7 @@ class ApiProjectController extends Controller
             ->where('projects.user_id', '!=', Auth::user()->id)
             ->where('projects.is_assembled', 0)
             ->orderBy('created_at', 'desc')
-            ->paginate(3);
+            ->paginate(8);
 
         // }
         return response()->json($projects);

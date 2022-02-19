@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
     let show = 70;
     let moretext = "show more ";
     let lesstext = "show less";
