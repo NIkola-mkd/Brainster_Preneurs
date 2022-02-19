@@ -19,9 +19,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [ProjectController::class, 'all'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/profile/my-profile', [UserController::class, 'index'])->middleware(['auth']);
 Route::post('/profile/profile-update', [UserController::class, 'update'])->middleware(['auth'])->name('profile-update');

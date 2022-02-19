@@ -13,7 +13,7 @@ class Project extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id')->with('academies');
     }
 
     public function academies()
@@ -23,6 +23,6 @@ class Project extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_project', 'user_id', 'project_id');
+        return $this->belongsToMany(User::class, 'user_project', 'project_id', 'user_id');
     }
 }

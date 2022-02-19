@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light border-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light border-navbar bg-white-custom ">
         <div class="container-fluid mx-5">
             <a class="navbar-brand" href="/dashboard">
                 <h1 class="navbar-responsive"> <span class="black-custom semi-bold">Brainster</span><span class="gray-custom semi-bold">Preneurs</span> </h1>
@@ -25,7 +25,7 @@
                 </ul>
                 @endif
                 @if(Auth::user()->image == null)
-                <a class="nav-link " href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/default_avatar.png') }}" alt="..."></a>
+                <a class="nav-link d-grid gap-2 d-md-flex justify-content-md-end" href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/default_avatar.png') }}" alt="..."></a>
                 @else
                 <a class="nav-link " href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/' . Auth::user()->image) }}" alt="..."></a>
                 @endif
