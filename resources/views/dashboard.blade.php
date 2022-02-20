@@ -40,10 +40,10 @@
                     <h5 class="semi-bold-bolder my-4">In what field can you been amazing?</h5>
                     <form action="" id="category">
                         <div class="col-2 filter">
-                            <input type="radio" class="btn-check " id="#all" autocomplete="off" name="academies[]" value="all" checked>
+                            <input type="radio" class="btn-check " id="#all" autocomplete="off" name="academies" value="all" checked>
                             <label class="font-size-skills btn-block m-1 btn btn-outline-success rounded text-wrap filter-width" for="all">All</label>
                             @foreach($academies as $academy)
-                            <input type="radio" class="btn-check" id="#{{$academy->name}}" autocomplete="off" name="academies[]" value="{{$academy->id}}">
+                            <input type="radio" class="btn-check" id="#{{$academy->name}}" autocomplete="off" name="academies" value="{{$academy->id}}">
                             <label class="font-size-skills btn-block m-1 btn btn-outline-success text-wrap filter-width rounded" for="#{{$academy->name}}">{{$academy->name}}</label>
                             @endforeach
                         </div>
@@ -55,8 +55,12 @@
             <div class="row">
                 <div class="container-fluid">
                     <div class="container mt-5">
-                        <div class="col-6 offset-5" id="pagination">
+                        <div class="row">
+                            <div class="col-6 offset-6">
+                                <div class="col-12" id="pagination">
 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

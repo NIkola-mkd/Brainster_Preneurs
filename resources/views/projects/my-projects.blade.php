@@ -67,7 +67,7 @@
                                     <img src="{{asset('custom_icons/8.png')}}" alt="" class="action-icon my-1">
                                 </a>
                                 <br>
-                                <a href="">
+                                <a href="{{route('delete-project',$project->id)}}">
                                     <img src="{{asset('custom_icons/7.png')}}" alt="" class="action-icon my-1">
                                 </a>
                             </div>
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="col-12 mt-2">
                                     @foreach($project->academies as $academy)
-                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-3">{{$academy->name}}</span>
+                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-md-3 p-2">{{$academy->name}}</span>
                                     @endforeach
                                 </div>
                             </div>

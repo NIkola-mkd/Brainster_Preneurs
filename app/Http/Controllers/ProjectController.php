@@ -145,6 +145,17 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::find($id);
+        $author = Auth::user()->id;
+
+        if (($project->user_id != $author))
+            abort(404);
+
+        Project::where('id', $id)->delete();
+
+        $project->academies()->detach();
+        $project->users()->detach();
+
+        return redirect()->route('my-projects')->with('success', 'Project deleted! ');
     }
 }
