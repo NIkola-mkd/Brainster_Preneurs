@@ -111,6 +111,7 @@ body {
     border-color: #dd7f1e;
 }
 
-.page-link {
+.page-link,
+.page-link:hover {
     color: #dd7f1e;
 }

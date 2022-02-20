@@ -31,6 +31,8 @@ Route::get('/projects/create-project', [ProjectController::class, 'create'])->mi
 
 Route::get('/projects/{id}/edit-project', [ProjectController::class, 'edit'])->middleware(['auth'])->name('edit-project');
 
+Route::get('/projects/{id}/delete', [ProjectController::class, 'destroy'])->middleware(['auth'])->name('delete-project');
+
 Route::post('/profile/create-project', [ProjectController::class, 'store'])->middleware(['auth'])
     ->name('project-create');
 
