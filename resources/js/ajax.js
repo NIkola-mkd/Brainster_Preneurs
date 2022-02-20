@@ -1,28 +1,10 @@
 $(function () {
-    $.ajax({
-        url: "/api/allProjects",
-        method: "GET",
-        success: function (data) {
-            var totalPages = data.last_page;
-
-            if (totalPages == 1) {
-                paginate(totalPages);
-            } else {
-                $("#pagination").twbsPagination({
-                    totalPages: totalPages,
-                    visiblePages: 5,
-                    next: "Next",
-                    prev: "Prev",
-                    onPageClick: function (event, page) {
-                        $(".card").hide();
-                        paginate(page);
-                    },
-                });
-            }
-        },
-        error: function (error) {
-            console.log("error: ", error);
-        },
+    $("#all").prop("checked", true);
+    var value = $("input[name='academies']:checked").val();
+    fetchProjects(value);
+    $("input[name = 'academies']").on("change", function () {
+        value = $("input[name='academies']:checked").val();
+        fetchProjects(value);
     });
 });
 
@@ -141,19 +123,6 @@ function projects(data) {
     readMore();
 }
 
-function paginate(page) {
-    $.ajax({
-        url: "/api/allProjects?page=" + page,
-        method: "GET",
-        success: function (data) {
-            projects(data);
-        },
-        error: function (error) {
-            console.log("error: ", error);
-        },
-    });
-}
-
 function readMore() {
     let show = 50;
     let moretext = "show more ";
@@ -190,5 +159,27 @@ function readMore() {
         $(this).parent().prev().toggle();
         $(this).prev().toggle();
         return false;
+    });
+}
+
+function fetchProjects(value) {
+    $.ajax({
+        url: "/api/allProjects",
+        method: "GET",
+        cache: false,
+        async: true,
+        data: {
+            category: value,
+        },
+        success: function (data) {
+            var totalPages = data.last_page;
+
+            $(".card").hide();
+            projects(data);
+        },
+        error: function (error) {
+            console.log("error: ", error);
+            alert(error.responseJSON.message);
+        },
     });
 }
