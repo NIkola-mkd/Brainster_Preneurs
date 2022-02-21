@@ -8,6 +8,33 @@ $(function () {
         value = $("input[name='academies']:checked").val();
         fetchProjects(value);
     });
+
+    $("#applyModal .send").on("click", function () {
+        $.ajax({
+            url: "/api/apply/" + $("#projectID").val(),
+            method: "POST",
+            data: {
+                _token: $('meta[name="csrf-token"]').attr("content"),
+                id: $("#projectID").val(),
+                message: $("#message").val(),
+            },
+            success: function (response) {
+                console.log(response);
+                $("#applyModal").modal("hide");
+                swal(
+                    "Application is sent!",
+                    "Please wait to be approved!",
+                    "success"
+                );
+                fetchProjects(value);
+                $("#message").val("");
+            },
+            error: function (error) {
+                console.log(error.responseJSON.errors.message);
+                $("#error").html(error.responseJSON.errors.message);
+            },
+        });
+    });
 });
 
 function projects(data) {
@@ -80,7 +107,7 @@ function projects(data) {
                         </div>
                         <div class="col-4 mt-5 ">
                            <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
-                                <button id = 'apply' class = 'btn btn-success px-5'>I AM IN</button>
+                                <button id = '${data.data[i].id}' class = 'btn btn-success px-5 applyBtn'>I AM IN</button>
                             </div>
                         </div>
                          </div>             
@@ -93,7 +120,7 @@ function projects(data) {
                         </div>
                         <div class="col-4 mt-5 ">
                            <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
-                                <button id = 'apply' class = 'btn btn-success px-5' disabled>I AM IN</button>
+                                <button id = 'apply' class = 'btn btn-success px-5 applyBtn' disabled>I AM IN</button>
                             </div>
                         </div>
                          </div>             
@@ -108,7 +135,7 @@ function projects(data) {
                         </div>
                         <div class="col-4 mt-5 ">
                            <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
-                                <button id = 'apply' class = 'btn btn-success px-5' disabled>I AM IN</button>
+                                <button id = 'apply' class = 'btn btn-success px-5 applyBtn' disabled>I AM IN</button>
                             </div>
                         </div>
                          </div>             
@@ -123,6 +150,12 @@ function projects(data) {
     }
 
     readMore();
+
+    $(".applyBtn").on("click", function () {
+        var id = $(this).attr("id");
+        $("#projectID").val(id);
+        $("#applyModal").modal("show");
+    });
 }
 
 function readMore() {
@@ -180,7 +213,6 @@ function fetchProjects(value) {
             if (totalPages == 1) {
                 let page = 1;
                 paginate(value, page);
-                console.log(value);
             }
             $("#pagination").twbsPagination({
                 totalPages: totalPages,
@@ -188,7 +220,6 @@ function fetchProjects(value) {
                 next: "Next",
                 prev: "Prev",
                 onPageClick: function (event, page) {
-                    console.log(value);
                     paginate(value, page);
                 },
             });

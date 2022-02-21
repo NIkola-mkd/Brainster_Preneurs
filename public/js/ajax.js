@@ -11,6 +11,28 @@ $(function () {
     value = $("input[name='academies']:checked").val();
     fetchProjects(value);
   });
+  $("#applyModal .send").on("click", function () {
+    $.ajax({
+      url: "/api/apply/" + $("#projectID").val(),
+      method: "POST",
+      data: {
+        _token: $('meta[name="csrf-token"]').attr("content"),
+        id: $("#projectID").val(),
+        message: $("#message").val()
+      },
+      success: function success(response) {
+        console.log(response);
+        $("#applyModal").modal("hide");
+        swal("Application is sent!", "Please wait to be approved!", "success");
+        fetchProjects(value);
+        $("#message").val("");
+      },
+      error: function error(_error) {
+        console.log(_error.responseJSON.errors.message);
+        $("#error").html(_error.responseJSON.errors.message);
+      }
+    });
+  });
 });
 
 function projects(data) {
@@ -24,14 +46,14 @@ function projects(data) {
       card += "\n                                    <span class=\"text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-3\">" + data.data[i].academies[j].name + "</span>\n                               ";
     }
 
-    var btn = "  </div>\n                        </div>\n                        </div>\n                        <div class=\"col-4 mt-5 \">\n                           <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>\n                                <button id = 'apply' class = 'btn btn-success px-5'>I AM IN</button>\n                            </div>\n                        </div>\n                         </div>             \n                </div>\n            </div>\n        </div>";
+    var btn = "  </div>\n                        </div>\n                        </div>\n                        <div class=\"col-4 mt-5 \">\n                           <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>\n                                <button id = '".concat(data.data[i].id, "' class = 'btn btn-success px-5 applyBtn'>I AM IN</button>\n                            </div>\n                        </div>\n                         </div>             \n                </div>\n            </div>\n        </div>");
 
     if (authcomplete == "") {
-      btn = "  </div>\n                        </div>\n                        </div>\n                        <div class=\"col-4 mt-5 \">\n                           <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>\n                                <button id = 'apply' class = 'btn btn-success px-5' disabled>I AM IN</button>\n                            </div>\n                        </div>\n                         </div>             \n                </div>\n            </div>\n        </div>";
+      btn = "  </div>\n                        </div>\n                        </div>\n                        <div class=\"col-4 mt-5 \">\n                           <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>\n                                <button id = 'apply' class = 'btn btn-success px-5 applyBtn' disabled>I AM IN</button>\n                            </div>\n                        </div>\n                         </div>             \n                </div>\n            </div>\n        </div>";
     } else if (data.data[i].users_count > 0) {
       for (var k = 0; k < data.data[i].users.length; k++) {
         if (authcheck == data.data[i].users[k].id) {
-          btn = "  </div>\n                        </div>\n                        </div>\n                        <div class=\"col-4 mt-5 \">\n                           <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>\n                                <button id = 'apply' class = 'btn btn-success px-5' disabled>I AM IN</button>\n                            </div>\n                        </div>\n                         </div>             \n                </div>\n            </div>\n        </div>";
+          btn = "  </div>\n                        </div>\n                        </div>\n                        <div class=\"col-4 mt-5 \">\n                           <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>\n                                <button id = 'apply' class = 'btn btn-success px-5 applyBtn' disabled>I AM IN</button>\n                            </div>\n                        </div>\n                         </div>             \n                </div>\n            </div>\n        </div>";
         }
       }
     }
@@ -40,6 +62,11 @@ function projects(data) {
   }
 
   readMore();
+  $(".applyBtn").on("click", function () {
+    var id = $(this).attr("id");
+    $("#projectID").val(id);
+    $("#applyModal").modal("show");
+  });
 }
 
 function readMore() {
@@ -87,7 +114,6 @@ function fetchProjects(value) {
       if (totalPages == 1) {
         var page = 1;
         paginate(value, page);
-        console.log(value);
       }
 
       $("#pagination").twbsPagination({
@@ -96,14 +122,13 @@ function fetchProjects(value) {
         next: "Next",
         prev: "Prev",
         onPageClick: function onPageClick(event, page) {
-          console.log(value);
           paginate(value, page);
         }
       });
     },
-    error: function error(_error) {
-      console.log("error: ", _error);
-      alert(_error.responseJSON.message);
+    error: function error(_error2) {
+      console.log("error: ", _error2);
+      alert(_error2.responseJSON.message);
     }
   });
 }
@@ -122,9 +147,9 @@ function paginate(value, page) {
       $(".card").hide();
       projects(data);
     },
-    error: function error(_error2) {
-      console.log("error: ", _error2);
-      alert(_error2.responseJSON.message);
+    error: function error(_error3) {
+      console.log("error: ", _error3);
+      alert(_error3.responseJSON.message);
     }
   });
 }
