@@ -45,6 +45,26 @@ class ApiProjectController extends Controller
         }
     }
 
+
+    public function apply(Request $request, $id)
+    {
+        $request->validate([
+            'message' => 'required'
+        ]);
+        $user = Auth::user()->id;
+        $msg = $request->message;
+        $id = $request->id;
+
+        $project = Project::find($id);
+
+        if ($project->save()) {
+            $project->users()->attach($user, ['message' => $msg]);
+            return response()->json(['success' => true, 'message' => 'You applied for the project']);
+        }
+
+        return response()->json(['error' => true, 'message' => 'Please try again']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

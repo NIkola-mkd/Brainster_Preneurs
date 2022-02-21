@@ -1,12 +1,21 @@
 body {
-    background: url(/images/3.jpg?35d68cad16c18841783ae8ad60f0d60d) no-repeat center center fixed;
+    background: url(/images/3.jpg?35d68cad16c18841783ae8ad60f0d60d) no-repeat
+        center center fixed;
     background-size: cover;
 }
 
 a:hover {
     color: #dd7f1e !important;
 }
-
+textarea {
+    border: none !important;
+    outline: none !important;
+    background-color: unset !important;
+    overflow: hidden;
+    resize: none;
+    color: #949d99 !important;
+    border-bottom: 1.5px solid black !important;
+}
 .card-image {
     position: absolute;
     top: -45 !important;
@@ -119,3 +128,7 @@ a:hover {
     color: white !important;
 }
 
+.swal-button {
+    background-color: #48695c !important;
+    color: #fff;
+}
