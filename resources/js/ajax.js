@@ -42,8 +42,8 @@ function projects(data) {
     var authcomplete = $('meta[name="auth-completed"]').attr("content");
     for (let i = 0; i < data.data.length; i++) {
         let card =
-            `<div class="col-lg-12 col-md-10 col-12 my-7 ">
-                        <div class="card mb-3 rounded mt-5 ">
+            `<div class="col-lg-12 col-md-12 col-12 my-7 ">
+                        <div class="card mb-lg-3 mb-5 rounded mt-5 ">
                             <div class="row g-0">
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <div class="col-3 mx-auto">
@@ -89,7 +89,7 @@ function projects(data) {
                     <div class="row g-0">
                         <div class="col-lg-8 col-md-7 col-12 ">
                             <div class="row mt-4 mx-auto">
-                                <div class="col-6 text-center">
+                                <div class="col-lg-6 col-12 text-center">
                                     <span class="gray-custom semi-bold-bolder text-center">I'm looking for</span>
                                 </div>
                                 <div class="col-12 mt-2">`;
@@ -97,7 +97,7 @@ function projects(data) {
         for (let j = 0; j < data.data[i].academies.length; j++) {
             card +=
                 `
-                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-3">` +
+                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-lg-3 p-1">` +
                 data.data[i].academies[j].name +
                 `</span>
                                `;
@@ -105,9 +105,9 @@ function projects(data) {
         var btn = `  </div>
                         </div>
                         </div>
-                        <div class="col-4 mt-5 ">
+                        <div class="col-md-4 col-12 mt-5 ">
                            <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
-                                <button id = '${data.data[i].id}' class = 'btn btn-success px-5 applyBtn'>I AM IN</button>
+                                <button id = '${data.data[i].id}' class = 'btn btn-success px-lg-5 px-2 applyBtn'>I AM IN</button>
                             </div>
                         </div>
                          </div>             
@@ -120,7 +120,7 @@ function projects(data) {
                         </div>
                         <div class="col-4 mt-5 ">
                            <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
-                                <button id = 'apply' class = 'btn btn-success px-5 applyBtn' disabled>I AM IN</button>
+                                <button id = 'apply' class = 'btn btn-success px-lg-5 px-2 applyBtn' disabled>I AM IN</button>
                             </div>
                         </div>
                          </div>             
@@ -135,7 +135,7 @@ function projects(data) {
                         </div>
                         <div class="col-4 mt-5 ">
                            <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
-                                <button id = 'apply' class = 'btn btn-success px-5 applyBtn' disabled>I AM IN</button>
+                                <button id = 'apply' class = 'btn btn-success px-lg-5 px-2 applyBtn' disabled>I AM IN</button>
                             </div>
                         </div>
                          </div>             

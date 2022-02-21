@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('allProjects', [ApiProjectController::class, 'index']);
+Route::get('allProjects', [ApiProjectController::class, 'index'])->middleware('auth:sanctum');
 Route::post('apply/{id}', [ApiProjectController::class, 'apply'])->middleware('auth:sanctum');
