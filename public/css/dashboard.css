@@ -83,8 +83,7 @@ a:hover {
 }
 
 .filter-width {
-    width: 120;
-    height: 100;
+    width: 110;
 }
 .btn-applicants {
     background-color: #48695c !important;
@@ -118,8 +117,6 @@ a:hover {
 }
 .fixed {
     position: fixed;
-    width: 300px;
-    height: 30px;
 }
 
 .icon {
@@ -127,11 +124,11 @@ a:hover {
     height: 50;
 }
 
-.wrapper {
-    position: relative !important;
-    width: 350px !important;
-    height: 1200px !important;
+.swal-button {
+    background-color: #48695c !important;
+    color: #fff;
 }
+
 @media (max-width: 768px) {
     .menu {
         display: none;

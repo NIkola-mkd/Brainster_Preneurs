@@ -36,6 +36,19 @@
     <div class="row">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-4 ms-5 wrapper menu">
+                    <h5 class="semi-bold-bolder my-4 ">In what field can you been amazing?</h5>
+                    <form action="" id="category">
+                        <div class="col-lg-2 fixed filters" id="menu">
+                            <input type="radio" class="btn-check category" id="all" autocomplete="off" name="academies" value="all">
+                            <label class="font-size-skills btn-block m-1 btn btn-outline-success rounded text-wrap filter-width p-1" for="all">All</label>
+                            @foreach($academies as $academy)
+                            <input type="radio" class="btn-check category" id="#{{$academy->name}}" autocomplete="off" name="academies" value="{{$academy->id}}">
+                            <label class="font-size-skills btn-block m-1 btn btn-outline-success text-wrap filter-width rounded p-1" for="#{{$academy->name}}">{{$academy->name}}</label>
+                            @endforeach
+                        </div>
+                    </form>
+                </div>
                 <div class="col-12 menu-responsive">
                     <h5 class="semi-bold-bolder my-4 ">In what field can you been amazing?</h5>
                     <div class="btn-group dropend ">
@@ -56,19 +69,6 @@
                             </div>
                         </ul>
                     </div>
-                </div>
-                <div class="col-4 ms-5 wrapper menu">
-                    <h5 class="semi-bold-bolder my-4 ">In what field can you been amazing?</h5>
-                    <form action="" id="category">
-                        <div class="col-lg-2 col-4 fixed filters">
-                            <input type="radio" class="btn-check category" id="all" autocomplete="off" name="academies" value="all">
-                            <label class="font-size-skills btn-block m-1 btn btn-outline-success rounded text-wrap filter-width" for="all">All</label>
-                            @foreach($academies as $academy)
-                            <input type="radio" class="btn-check category" id="#{{$academy->name}}" autocomplete="off" name="academies" value="{{$academy->id}}">
-                            <label class="font-size-skills btn-block m-1 btn btn-outline-success text-wrap filter-width rounded" for="#{{$academy->name}}">{{$academy->name}}</label>
-                            @endforeach
-                        </div>
-                    </form>
                 </div>
                 <div class="col-lg-7 col-10 offset-lg-0 offset-1" id="projectsCards">
                     <h5 class="semi-bold-bolder my-4 text-end ">
@@ -107,7 +107,7 @@
                 <input name="project_id" id="projectID" hidden>
                 <div class="col-12  mt-lg-1">
                     <label for="message" class="classic text-secondary fw-bold ">Message</label>
-                    <textarea class="form-control my-3" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt quis ante sed tempus. Cras imperdiet, quam ac fringilla venenatis, lectus nisl sagittis quam, eget tincidunt velit nibh at dui. Sed vel libero feugiat, luctus lacus at, fringilla sem. Nam tincidunt tortor velit, in porta dolor ullamcorper quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. " id="message" name="message"></textarea>
+                    <textarea class="form-control my-3" placeholder="Enter your messaege..." id="message" name="message"></textarea>
                     <div class="row mb-3">
                         <span class=" red-custom semi-bold mt-1" id="error"></span>
                     </div>
