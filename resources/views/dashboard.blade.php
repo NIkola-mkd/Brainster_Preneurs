@@ -58,6 +58,7 @@
                     </div>
                 </div>
                 <div class="col-4 ms-5 wrapper menu">
+                    <h5 class="semi-bold-bolder my-4 ">In what field can you been amazing?</h5>
                     <form action="" id="category">
                         <div class="col-lg-2 col-4 fixed filters">
                             <input type="radio" class="btn-check category" id="all" autocomplete="off" name="academies" value="all">
