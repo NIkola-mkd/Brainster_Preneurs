@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="col-12 mt-2">
                                     @foreach($project->academies as $academy)
-                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-md-3 p-2">{{$academy->name}}</span>
+                                    <span class="text-wrap academies-circles text-white text-center semi-bold bg-green-custom p-lg-3 p-2">{{$academy->name}}</span>
                                     @endforeach
                                 </div>
                             </div>

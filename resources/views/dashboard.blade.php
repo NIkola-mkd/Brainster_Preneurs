@@ -36,10 +36,30 @@
     <div class="row">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4 ms-5">
-                    <h5 class="semi-bold-bolder my-4">In what field can you been amazing?</h5>
+                <div class="col-12 menu-responsive">
+                    <h5 class="semi-bold-bolder my-4 ">In what field can you been amazing?</h5>
+                    <div class="btn-group dropend ">
+                        <button type="button" class="btn btn-secondary ">
+                            Select Field
+                        </button>
+                        <button type="button" class="btn  btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropright</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <div class="col-12">
+                                <input type="radio" class="btn-check category" id="all" autocomplete="off" name="academies" value="all">
+                                <label class="col-12 btn-block m-1 btn btn-outline-success rounded text-wrap " for="all">All</label>
+                                @foreach($academies as $academy)
+                                <input type="radio" class="btn-check category" id="#{{$academy->name}}" autocomplete="off" name="academies" value="{{$academy->id}}">
+                                <label class="col-12 btn-block m-1 btn btn-outline-success text-wrap rounded" for="#{{$academy->name}}">{{$academy->name}}</label>
+                                @endforeach
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4 ms-5 wrapper menu">
                     <form action="" id="category">
-                        <div class="col-2 filter">
+                        <div class="col-lg-2 col-4 fixed filters">
                             <input type="radio" class="btn-check category" id="all" autocomplete="off" name="academies" value="all">
                             <label class="font-size-skills btn-block m-1 btn btn-outline-success rounded text-wrap filter-width" for="all">All</label>
                             @foreach($academies as $academy)
@@ -49,15 +69,20 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-7" id="projectsCards">
+                <div class="col-lg-7 col-10 offset-lg-0 offset-1" id="projectsCards">
+                    <h5 class="semi-bold-bolder my-4 text-end ">
+                        <img class="icon mt-5" src="{{asset('custom_icons/3.png')}}" alt="">
+                        Checkout for the latest projects
+                    </h5>
+
                 </div>
             </div>
             <div class="row">
                 <div class="container-fluid">
                     <div class="container mt-5">
                         <div class="row">
-                            <div class="col-6 offset-6">
-                                <div class="col-12" id="pagination">
+                            <div class="col-lg-6 offset-lg-5 col-md-8  offset-md-3 col-12">
+                                <div class="col-12 " id="pagination">
 
                                 </div>
                             </div>
