@@ -40,10 +40,10 @@
                     <h5 class="semi-bold-bolder my-4">In what field can you been amazing?</h5>
                     <form action="" id="category">
                         <div class="col-2 filter">
-                            <input type="radio" class="btn-check " id="#all" autocomplete="off" name="academies" value="all" checked>
+                            <input type="radio" class="btn-check category" id="all" autocomplete="off" name="academies" value="all">
                             <label class="font-size-skills btn-block m-1 btn btn-outline-success rounded text-wrap filter-width" for="all">All</label>
                             @foreach($academies as $academy)
-                            <input type="radio" class="btn-check" id="#{{$academy->name}}" autocomplete="off" name="academies" value="{{$academy->id}}">
+                            <input type="radio" class="btn-check category" id="#{{$academy->name}}" autocomplete="off" name="academies" value="{{$academy->id}}">
                             <label class="font-size-skills btn-block m-1 btn btn-outline-success text-wrap filter-width rounded" for="#{{$academy->name}}">{{$academy->name}}</label>
                             @endforeach
                         </div>
@@ -74,7 +74,6 @@
 
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"> </script>
 <script src="{{asset('js/ajax.js')}}"></script>
-<script src="{{asset('js/readMoreLess.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"> </script>
 @endsection

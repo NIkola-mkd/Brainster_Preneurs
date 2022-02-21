@@ -6,6 +6,10 @@ body {
     background-size: cover;
 }
 
+a:hover {
+    color: #dd7f1e !important;
+}
+
 .card-image {
     position: absolute;
     top: -45 !important;
@@ -106,12 +110,14 @@ body {
 
 .page-item.active .page-link {
     z-index: 3;
-    color: #fff;
     background-color: #dd7f1e;
-    border-color: #dd7f1e;
+    color: #fff;
+    border-color: unset;
 }
-
-.page-link,
-.page-link:hover {
+.page-link {
     color: #dd7f1e;
+}
+.page-link:hover {
+    background-color: #dd7f1e;
+    color: white !important;
 }

@@ -17,29 +17,32 @@ class ApiProjectController extends Controller
     public function index(Request $request)
     {
 
-        // if ($request->ajax() == 'all') {
-        $projects = Project::with('academies', 'author', 'users')
-            ->withCount('users')
-            ->where('projects.user_id', '!=', Auth::user()->id)
-            ->where('projects.is_assembled', 0)
-            ->orderBy('created_at', 'desc')
-            ->paginate(8);
+        $category = $request->category;
 
-        // }
-        return response()->json($projects);
-        // } 
-        // else {
-        //     $project = Project::with('author', 'academies')
-        //         ->withCount('users')
-        //         ->whereHas('academies', function ($query) {
-        //             return $query->where('academy_id', '=', 1);
-        //         })
-        //         ->where('projects.user_id', '!=', Auth::user()->id)
-        //         ->orderBy('created_at', 'desc')
-        //         ->paginate(3);
+        if ($request->ajax()) {
+            if ($category == 'all') {
+                $projects = Project::with('academies', 'author', 'users')
+                    ->withCount('users')
+                    ->where('projects.user_id', '!=', Auth::user()->id)
+                    ->where('projects.is_assembled', 0)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(8);
 
-        //     return response()->json($project);
-        // }
+                return response()->json($projects);
+            } else {
+                $project = Project::with('author', 'academies', 'users')
+                    ->withCount('users')
+                    ->whereHas('academies', function ($query) use ($category) {
+                        return $query->where('academy_id', '=', $category);
+                    })
+                    ->where('projects.user_id', '!=', Auth::user()->id)
+                    ->where('projects.is_assembled', 0)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(8);
+
+                return response()->json($project);
+            }
+        }
     }
 
     /**
