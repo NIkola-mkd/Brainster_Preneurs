@@ -36,6 +36,7 @@ class ApiProjectController extends Controller
                         return $query->where('academy_id', '=', $category);
                     })
                     ->where('projects.user_id', '!=', Auth::user()->id)
+                    ->where('projects.is_assembled', 0)
                     ->orderBy('created_at', 'desc')
                     ->paginate(8);
 

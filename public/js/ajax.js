@@ -72,6 +72,7 @@ function readMore() {
 }
 
 function fetchProjects(value) {
+  $("#pagination").twbsPagination("destroy");
   $.ajax({
     url: "/api/allProjects",
     method: "GET",
@@ -82,12 +83,48 @@ function fetchProjects(value) {
     },
     success: function success(data) {
       var totalPages = data.last_page;
-      $(".card").hide();
-      projects(data);
+
+      if (totalPages == 1) {
+        var page = 1;
+        paginate(value, page);
+        console.log(value);
+      }
+
+      $("#pagination").twbsPagination({
+        totalPages: totalPages,
+        visiblePages: 5,
+        next: "Next",
+        prev: "Prev",
+        onPageClick: function onPageClick(event, page) {
+          console.log(value);
+          paginate(value, page);
+        }
+      });
     },
     error: function error(_error) {
       console.log("error: ", _error);
       alert(_error.responseJSON.message);
+    }
+  });
+}
+
+function paginate(value, page) {
+  $.ajax({
+    url: "/api/allProjects?page=" + page,
+    method: "GET",
+    cache: false,
+    async: true,
+    data: {
+      category: value
+    },
+    success: function success(data) {
+      // totalPages = data.last_page;
+      $(".card").hide();
+      projects(data);
+    },
+    error: function error(_error2) {
+      console.log("error: ", _error2);
+      alert(_error2.responseJSON.message);
     }
   });
 }

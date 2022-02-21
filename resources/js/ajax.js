@@ -1,7 +1,9 @@
 $(function () {
     $("#all").prop("checked", true);
     var value = $("input[name='academies']:checked").val();
+
     fetchProjects(value);
+
     $("input[name = 'academies']").on("change", function () {
         value = $("input[name='academies']:checked").val();
         fetchProjects(value);
@@ -163,6 +165,8 @@ function readMore() {
 }
 
 function fetchProjects(value) {
+    $("#pagination").twbsPagination("destroy");
+
     $.ajax({
         url: "/api/allProjects",
         method: "GET",
@@ -173,7 +177,40 @@ function fetchProjects(value) {
         },
         success: function (data) {
             var totalPages = data.last_page;
+            if (totalPages == 1) {
+                let page = 1;
+                paginate(value, page);
+                console.log(value);
+            }
+            $("#pagination").twbsPagination({
+                totalPages: totalPages,
+                visiblePages: 5,
+                next: "Next",
+                prev: "Prev",
+                onPageClick: function (event, page) {
+                    console.log(value);
+                    paginate(value, page);
+                },
+            });
+        },
+        error: function (error) {
+            console.log("error: ", error);
+            alert(error.responseJSON.message);
+        },
+    });
+}
 
+function paginate(value, page) {
+    $.ajax({
+        url: "/api/allProjects?page=" + page,
+        method: "GET",
+        cache: false,
+        async: true,
+        data: {
+            category: value,
+        },
+        success: function (data) {
+            // totalPages = data.last_page;
             $(".card").hide();
             projects(data);
         },

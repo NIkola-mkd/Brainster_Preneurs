@@ -107,3 +107,17 @@ a:hover {
     color: white !important;
     cursor: unset !important;
 }
+
+.page-item.active .page-link {
+    z-index: 3;
+    background-color: #dd7f1e;
+    color: #fff;
+    border-color: unset;
+}
+.page-link {
+    color: #dd7f1e;
+}
+.page-link:hover {
+    background-color: #dd7f1e;
+    color: white !important;
+}
