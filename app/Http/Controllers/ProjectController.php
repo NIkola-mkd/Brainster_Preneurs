@@ -41,13 +41,7 @@ class ProjectController extends Controller
     {
         $academies = Academy::all();
 
-        $projects = Project::with('academies', 'author')
-            ->withCount('users')
-            ->where('projects.user_id', '!=', 1)
-            ->orderBy('created_at', 'desc')
-            ->paginate(3);
-
-        return view('dashboard', compact('academies', 'projects'));
+        return view('dashboard', compact('academies'));
     }
 
     /**
@@ -157,5 +151,18 @@ class ProjectController extends Controller
         $project->users()->detach();
 
         return redirect()->route('my-projects')->with('success', 'Project deleted! ');
+    }
+
+    public function myApplications()
+    {
+        $projects = Project::with('academies', 'author', 'users')
+            ->withCount('users')
+            ->whereHas('users', function ($query) {
+                return $query->where('user_id', Auth::user()->id);
+            })
+            ->orderBy('created_at', 'desc')
+            ->get();
+        // dd($projects);
+        return view('applications.my-applications', compact('projects'));
     }
 }

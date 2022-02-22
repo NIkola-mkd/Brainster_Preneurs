@@ -23,6 +23,6 @@ class Project extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_project', 'project_id', 'user_id')->withPivot('message');
+        return $this->belongsToMany(User::class, 'user_project', 'project_id', 'user_id')->withPivot('message', 'status');
     }
 }
