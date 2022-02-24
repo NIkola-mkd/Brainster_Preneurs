@@ -40,7 +40,10 @@
                                 <p class="font-applicants classic">applicants</p>
                             </button>
                             <div class="edit-delete">
-
+                                <a href="{{route('cancel',$project->id)}}" class="text-decoration-none">
+                                    <img src="{{asset('custom_icons/2.png')}}" alt="" class="action-icon my-1">
+                                    <p class="classic gray-custom ">Cancel</p>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -71,7 +74,7 @@
                                     <p class="ms-2 green-custom semi-bold-bolder">Application Accepted
                                         <img class="action-icon" src="{{asset('custom_icons/5.png')}}" alt="">
                                     </p>
-                                    @elseif($status->pivot->status == 'request')
+                                    @elseif($status->pivot->status == 'denied')
                                     <p class="ms-2 red-custom semi-bold-bolder">Application Denied
                                         <img class="action-icon" src="{{asset('custom_icons/6.png')}}" alt="">
                                     </p>
@@ -86,8 +89,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         @if($project->is_assembled == true)
                         <div class="col-4">
                             <img src="{{asset('custom_icons/assembled.png')}}" class="assembled " alt="">

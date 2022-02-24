@@ -165,4 +165,29 @@ class ProjectController extends Controller
         // dd($projects);
         return view('applications.my-applications', compact('projects'));
     }
+
+    public function cancel($id)
+    {
+
+        $projects = Project::find($id);
+
+        $project_check = Project::where('id', $id)
+            ->whereHas('users', function ($query) {
+                return $query->where('user_id', Auth::user()->id)
+                    ->where('status', 'denied')
+                    ->orWhere('status', 'request');
+            })->value('id');
+
+        // $project->users()->wherePivot('user_id', Auth::user()->id)
+        //     ->wherePivot('status', 'denied')
+        //     ->wherePivot('status', 'request')->detach();
+
+
+        if ($project_check == $id) {
+            $projects->users()->wherePivot('user_id', Auth::user()->id)->detach();
+            return redirect()->back();
+        } else {
+            abort(404);
+        }
+    }
 }
