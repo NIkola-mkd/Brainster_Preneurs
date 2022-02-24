@@ -162,7 +162,7 @@ class ProjectController extends Controller
             })
             ->orderBy('created_at', 'desc')
             ->get();
-        // dd($projects);
+
         return view('applications.my-applications', compact('projects'));
     }
 
@@ -177,11 +177,6 @@ class ProjectController extends Controller
                     ->where('status', 'denied')
                     ->orWhere('status', 'request');
             })->value('id');
-
-        // $project->users()->wherePivot('user_id', Auth::user()->id)
-        //     ->wherePivot('status', 'denied')
-        //     ->wherePivot('status', 'request')->detach();
-
 
         if ($project_check == $id) {
             $projects->users()->wherePivot('user_id', Auth::user()->id)->detach();
