@@ -14,7 +14,7 @@
                         <a class="nav-link navbar-responsive {{ Request::is('projects/my-projects') ? 'active' : '' }}" aria-current="page" href="/projects/my-projects">My projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-responsive " href="#">My appclications</a>
+                        <a class="nav-link navbar-responsive " href="/applications/my-applications">My appclications</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link navbar-responsive {{ Request::is('profile/my-profile') ? 'active' : '' }}" href="/profile/my-profile">My profile</a>

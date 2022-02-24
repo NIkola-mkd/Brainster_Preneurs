@@ -40,4 +40,9 @@ Route::post('/profile/create-project', [ProjectController::class, 'store'])->mid
 Route::put('/profile/{id}/edit-project', [ProjectController::class, 'update'])->middleware(['auth'])
     ->name('project-edit');
 
+
+Route::get('/applications/my-applications', [ProjectController::class, 'myApplications'])->middleware('auth');
+
+Route::get('/applications/{id}/my-applications', [ProjectController::class, 'cancel'])->middleware('auth')->name('cancel');
+
 require __DIR__ . '/auth.php';
