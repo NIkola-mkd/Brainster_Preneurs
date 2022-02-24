@@ -39,12 +39,16 @@
                                 <span class="font-applicants classic-bold">{{$project->users_count}}</span>
                                 <p class="font-applicants classic">applicants</p>
                             </button>
+                            @foreach($project->users as $status)
+                            @if(($status->pivot->status == 'request') || ($status->pivot->status == 'denied'))
                             <div class="edit-delete">
                                 <a href="{{route('cancel',$project->id)}}" class="text-decoration-none">
                                     <img src="{{asset('custom_icons/2.png')}}" alt="" class="action-icon my-1">
                                     <p class="classic gray-custom ">Cancel</p>
                                 </a>
                             </div>
+                            @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
