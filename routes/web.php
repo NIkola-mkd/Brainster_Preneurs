@@ -45,4 +45,9 @@ Route::get('/applications/my-applications', [ProjectController::class, 'myApplic
 
 Route::get('/applications/{id}/my-applications', [ProjectController::class, 'cancel'])->middleware('auth')->name('cancel');
 
+Route::get('/projects/{id}/applicants', [ProjectController::class, 'applicants'])->middleware('auth')->name('applicants');
+
+Route::put('/projects/{id}/applicants', [ProjectController::class, 'assemble'])->middleware(['auth'])
+    ->name('project-assemble');
+
 require __DIR__ . '/auth.php';

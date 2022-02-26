@@ -79,17 +79,6 @@ class ProjectController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -157,12 +146,9 @@ class ProjectController extends Controller
     {
         $projects = Project::with('academies', 'author', 'users')
             ->withCount('users')
-            ->whereHas('users', function ($query) {
-                return $query->where('user_id', Auth::user()->id);
-            })
+            ->whereRelation('users', 'user_id', '=', Auth::user()->id)
             ->orderBy('created_at', 'desc')
             ->get();
-
         return view('applications.my-applications', compact('projects'));
     }
 
@@ -184,5 +170,32 @@ class ProjectController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    public function applicants($id)
+    {
+        $details = Project::with('users')
+            ->where('user_id', Auth::user()->id)
+            ->whereHas('users', function ($query) use ($id) {
+                return $query->where('project_id', $id);
+            })->get();
+
+        return view('projects.applicants', compact('details'));
+    }
+
+    public function assemble($id)
+    {
+        $project = Project::find($id);
+
+        $project->is_assembled = true;
+
+        $denied = $project->users()->where('status', 'request')->pluck('id');
+
+        if ($project->save()) {
+            $project->users()->updateExistingPivot($denied, ['status' => 'denied']);
+            return redirect()->back()->with('success', 'Team assembled! ');
+        }
+
+        return redirect()->back()->with('error', 'Error! ');
     }
 }
