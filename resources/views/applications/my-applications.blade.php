@@ -40,6 +40,7 @@
                                 <p class="font-applicants classic">applicants</p>
                             </button>
                             @foreach($project->users as $status)
+                            @if($status->pivot->user_id == Auth::user()->id)
                             @if(($status->pivot->status == 'request') || ($status->pivot->status == 'denied'))
                             <div class="edit-delete">
                                 <a href="{{route('cancel',$project->id)}}" class="text-decoration-none">
@@ -47,6 +48,7 @@
                                     <p class="classic gray-custom ">Cancel</p>
                                 </a>
                             </div>
+                            @endif
                             @endif
                             @endforeach
                         </div>
@@ -58,7 +60,8 @@
                             <div class="row mt-4 mx-auto">
                                 <div class="col-lg-6 col-md-5 col-12 mt-lg-5 d-md-none d-block">
                                     @foreach($project->users as $status)
-                                    @if($status->pivot->status == 'approved')
+                                    @if($status->pivot->user_id == Auth::user()->id)
+                                    @if($status->pivot->status == 'accepted')
                                     <p class="ms-2 green-custom semi-bold-bolder">Application Accepted
                                         <img class="action-icon" src="{{asset('custom_icons/5.png')}}" alt="">
                                     </p>
@@ -67,6 +70,7 @@
                                         <img class="action-icon" src="{{asset('custom_icons/6.png')}}" alt="">
                                     </p>
                                     @endif
+                                    @endif
                                     @endforeach
                                 </div>
                                 <div class="col-6 text-center">
@@ -74,7 +78,8 @@
                                 </div>
                                 <div class="col-lg-6 col-md-5 col-12 mt-lg-5 d-md-block d-none">
                                     @foreach($project->users as $status)
-                                    @if($status->pivot->status == 'approved')
+                                    @if($status->pivot->user_id == Auth::user()->id)
+                                    @if($status->pivot->status == 'accepted')
                                     <p class="ms-2 green-custom semi-bold-bolder">Application Accepted
                                         <img class="action-icon" src="{{asset('custom_icons/5.png')}}" alt="">
                                     </p>
@@ -82,6 +87,7 @@
                                     <p class="ms-2 red-custom semi-bold-bolder">Application Denied
                                         <img class="action-icon" src="{{asset('custom_icons/6.png')}}" alt="">
                                     </p>
+                                    @endif
                                     @endif
                                     @endforeach
                                 </div>

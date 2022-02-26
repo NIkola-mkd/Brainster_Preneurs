@@ -58,10 +58,12 @@
                         <div class="card-body ">
                             <h5 class="card-title classic-bold">{{$project->title}}</h5>
                             <p class="classic mt-3 showMore">{{$project->description}}</p>
-                            <button class="applicants btn btn-outline-success p-lg-1 p-md-1 p-0">
-                                <span class="font-applicants classic-bold">{{$project->users()->count()}}</span>
-                                <p class="font-applicants classic">applicants</p>
-                            </button>
+                            <a href="{{route('applicants', $project->id)}}">
+                                <button class="applicants btn btn-outline-success p-lg-1 p-md-1 p-0">
+                                    <span class="font-applicants classic-bold">{{$project->users()->count()}}</span>
+                                    <p class="font-applicants classic">applicants</p>
+                                </button>
+                            </a>
                             <div class="edit-delete">
                                 <a href="{{route('edit-project',$project->id)}}">
                                     <img src="{{asset('custom_icons/8.png')}}" alt="" class="action-icon my-1">
