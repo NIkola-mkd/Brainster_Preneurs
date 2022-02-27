@@ -17,14 +17,14 @@
                 <h3 class="semi-bol-bolder">{{$detail->title}} - Applicants</h3>
 
                 <h5 class="classic-bold mt-3">Choose your teammates
-                    <img class="icon ms-5" src="{{asset('custom_icons/4.png')}}" alt="">
+                    <img class="icon ms-lg-5" src="{{asset('custom_icons/4.png')}}" alt="">
                 </h5>
             </div>
-            <div class="col-6">
-                <p class="text-end gray-custom">Ready to start?</p>
-                <p class="text-end gray-custom">Click on the button bellow
+            <div class="col-lg-6 col-md-4">
+                <p class="text-lg-end gray-custom">Ready to start?</p>
+                <p class="text-lg-end gray-custom">Click on the button bellow
                 </p>
-                <div class="col-6 offset-9">
+                <div class="col-lg-6 offset-lg-9">
                     <form action="{{route('project-assemble', $detail->id)}}" method="POST">
                         @csrf
                         @method('PUT')
@@ -41,13 +41,15 @@
                     @foreach($details as $detail)
                     <input type="text" value="{{$detail->id}}" hidden id="projectID">
                     @foreach($detail->users as $user)
-                    <div class="col-lg-4 d-flex align-items-stretch mt-5 mx-auto">
+                    <div class="col-lg-4 col-md-8 col-12 d-flex align-items-stretch mt-5 mx-auto">
                         <div class="card rounded  {{$user->pivot->status == 'accepted' ? 'accepted' : ''}} " style="width: 18rem;">
-                            <div class="col-3 mx-auto">
+                            <div class="col-md-3 col-4 mx-auto">
                                 <img src="{{asset('avatars/'. $user->image)}}" class="avatar-applicants" alt="...">
                             </div>
                             <div class="card-body text-center mt-5">
-                                <h5 class="semi-bold-bolder">{{$user->name}} {{$user->surname}}</h5>
+                                <a class="text-decoration-none black-custom" href="{{route('applicant-profile',['id' => $user->id, 'name'=> $user->name, 'surname'=>$user->surname])}}">
+                                    <h5 class="semi-bold-bolder">{{$user->name}} {{$user->surname}}</h5>
+                                </a>
                                 <h6 class="orange-custom classic-bold ">{{$user->academies->profession}}</h6>
                                 <span class="classic gray-custom">{{$user->email}}</span>
                                 <p class="classic">{{$user->pivot->message}}</p>

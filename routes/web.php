@@ -50,4 +50,7 @@ Route::get('/projects/{id}/applicants', [ProjectController::class, 'applicants']
 Route::put('/projects/{id}/applicants', [ProjectController::class, 'assemble'])->middleware(['auth'])
     ->name('project-assemble');
 
+
+Route::get('/applicants/{id}/{name}-{surname}', [UserController::class, 'show'])->middleware('auth')->name('applicant-profile');
+
 require __DIR__ . '/auth.php';

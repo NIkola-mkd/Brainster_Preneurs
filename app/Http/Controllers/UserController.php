@@ -58,9 +58,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $name, $surname)
     {
-        //
+        $user = User::find($id)
+            ->with('skills')
+            ->whereHas('skills', function ($query) use ($id) {
+                return $query->where('user_id', $id);
+            })
+            ->get();
+
+        return view('applicants.applicant-profile', compact('user'));
     }
 
     /**
