@@ -2,6 +2,9 @@ body {
     background-color: #f6f6f6;
     overflow-x: hidden;
 }
+a:hover {
+    color: #dd7f1e !important;
+}
 
 .icon {
     width: 50;
@@ -31,5 +34,11 @@ body {
 
 .accepted {
     background-color: #ccd3da;
+}
+
+@media (max-width: 768) {
+    body {
+        overflow-x: none;
+    }
 }
 
