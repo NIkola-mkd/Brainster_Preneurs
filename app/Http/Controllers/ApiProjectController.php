@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MailEvent;
 use App\Models\User;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -57,7 +58,17 @@ class ApiProjectController extends Controller
 
         $project = Project::find($id);
 
+        $project_author = Project::find($id)->with('author')->first();
+        $applicant = User::find($user)->with('skills')->first();
+        $email = $project_author->author->email;
+        $title = $project_author->title;
+        $skills = $applicant->skills->pluck('name');
+        $skills = $skills->toArray();
+        $name = $applicant->name . ' ' . $applicant->surname;
+
+
         if ($project->save()) {
+            event(new MailEvent($email, $name, $title, $skills, $msg));
             $project->users()->attach($user, ['message' => $msg]);
             return response()->json(['success' => true, 'message' => 'You applied for the project']);
         }
