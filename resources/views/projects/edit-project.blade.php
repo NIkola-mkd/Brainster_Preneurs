@@ -15,7 +15,6 @@
             @csrf
             @method('PUT')
             <div class="row mt-3">
-
                 <div class="col-lg-6 col-8 mt-3 ">
                     <h3>Edit Project</h3>
                     <div class="col-lg-4 col-12">
