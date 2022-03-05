@@ -11,25 +11,28 @@
                 @if(Auth::user()->image != null)
                 <ul class="navbar-nav ms-auto font-1rem">
                     <li class="nav-item ">
-                        <a class="nav-link navbar-responsive {{ Request::is('projects/my-projects') ? 'active' : '' }}" aria-current="page" href="/projects/my-projects">My projects</a>
+                        <a class="nav-link navbar-responsive @if((Request::is('projects/*'))|| (Request::is('applicants/*'))) active @endif" aria-current="page" href="/projects/my-projects">My projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-responsive " href="/applications/my-applications">My appclications</a>
+                        <a class="nav-link navbar-responsive {{ Request::is('applications/*') ? 'active' : '' }}" href="/applications/my-applications">My appclications</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-responsive {{ Request::is('profile/my-profile') ? 'active' : '' }}" href="/profile/my-profile">My profile</a>
+                        <a class="nav-link navbar-responsive {{ Request::is('profile/*') ? 'active' : '' }}" href="/profile/my-profile">My profile</a>
                     </li>
                     <li class="nav-item">
 
                     </li>
                 </ul>
                 @endif
-                @if(Auth::user()->image == null)
-                <a class="nav-link d-grid gap-2 d-md-flex justify-content-md-end" href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/default_avatar.png') }}" alt="..."></a>
-                @else
+                @if(Auth::user()->image != null)
                 <a class="nav-link " href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/' . Auth::user()->image) }}" alt="..."></a>
                 @endif
             </div>
         </div>
+        @if(Auth::user()->image == null)
+        <div class="d-flex flex-row-reverse bd-highlight">
+            <a class="bd-highlight" href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/default_avatar.png') }}" alt="..."></a>
+        </div>
+        @endif
     </nav>
 </header>

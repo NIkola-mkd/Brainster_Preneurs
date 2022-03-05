@@ -1,37 +1,11 @@
 body {
     background-color: #f6f6f6;
-    overflow-x: hidden;
 }
 
-a:hover {
-    color: unset !important;
-}
 .avatar-applicants {
     border-radius: 50%;
-    width: 250;
-    height: 250;
+    width: 75;
+    height: 75;
     border: white 4px solid;
 }
 
-.morecontent span {
-    display: none;
-}
-.morelink {
-    display: block;
-}
-
-.btn-outline-success {
-    border: none !important;
-    border-color: unset !important;
-    background-color: white !important;
-    color: black;
-}
-
-.btn-success {
-    background-color: #48695c !important;
-    color: white !important;
-}
-
-.mt-8 {
-    margin-top: 8rem !important;
-}

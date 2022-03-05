@@ -2,6 +2,14 @@ body {
     padding-top: 70px;
     overflow-y: auto;
 }
+
+.navbar-light .navbar-nav .nav-link {
+    color: black !important;
+}
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show > .nav-link {
+    color: #949d99 !important;
+}
 /* custom colors and fonts */
 
 /* colors */
