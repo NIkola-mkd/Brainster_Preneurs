@@ -55,17 +55,4 @@ Route::put('/projects/{id}/applicants', [ProjectController::class, 'assemble'])-
 
 Route::get('/applicants/{id}/{name}-{surname}', [UserController::class, 'show'])->middleware('auth')->name('applicant-profile');
 
-Route::get('test', function () {
-
-    $project_author = Project::find(6)->with('author')->first();
-    $applicant = User::find(1)->with('skills')->first();
-    $email = $project_author->author->email;
-    $title = $project_author->title;
-    $skills = $applicant->skills->pluck('name');
-    $skills = $skills->toArray();
-    $name = $applicant->name . ' ' . $applicant->surname;
-
-    dd($name);
-});
-
 require __DIR__ . '/auth.php';
