@@ -54,7 +54,12 @@ a:hover {
     background-color: #48695c !important;
     border-color: #48695c !important;
 }
-
+.btn-group > .btn-group:not(:first-child) > .btn,
+.btn-group > .btn:nth-child(n + 3),
+.btn-group > :not(.btn-check) + .btn {
+    color: white !important;
+    background-color: #48695c !important;
+}
 .font-applicants {
     font-size: 0.8rem;
 }
