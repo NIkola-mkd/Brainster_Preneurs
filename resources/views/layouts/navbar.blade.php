@@ -20,10 +20,6 @@
                         <a class="nav-link navbar-responsive {{ Request::is('profile/my-profile') ? 'active' : '' }}" href="/profile/my-profile">My profile</a>
                     </li>
                 </ul>
-                @endif
-                @if(Auth::user()->image == null)
-                <a class="nav-link d-grid gap-2 d-md-flex justify-content-md-end" href="/profile/my-profile"><img class="avatar" src="{{ asset('avatars/default_avatar.png') }}" alt="..."></a>
-                @else
                 <div class="btn-group dropstart d-lg-block d-none">
                     <a class="nav-link " href="/profile/my-profile" data-bs-toggle="dropdown" aria-expanded="false"><img class="avatar dropdown-toggle" src="{{ asset('avatars/' . Auth::user()->image) }}" alt="..."></a>
                     <ul class="dropdown-menu mt-5">

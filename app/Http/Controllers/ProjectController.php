@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Builder;
 class ProjectController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
+     * Display user projects
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -37,6 +37,11 @@ class ProjectController extends Controller
         return view('projects.my-projects', compact('projects', 'author'));
     }
 
+    /**
+     * display all academies as filter 
+     *buttons on dashboard page
+     */
+
     public function all()
     {
         $academies = Academy::all();
@@ -45,7 +50,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create ne project page .
      *
      * @return \Illuminate\Http\Response
      */
@@ -57,7 +62,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Sotre new project in db .
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -79,8 +84,10 @@ class ProjectController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
+     * edit project blade
+     
+     * list all data 
+     * 
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -100,7 +107,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update project .
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -121,8 +128,9 @@ class ProjectController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
+     * Delete project .
+     * only for authenticated users 
+     * check if the user is author of the project
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -142,6 +150,11 @@ class ProjectController extends Controller
         return redirect()->route('my-projects')->with('success', 'Project deleted! ');
     }
 
+    /**
+     * my applictions view page
+     * list project data
+     */
+
     public function myApplications()
     {
         $projects = Project::with('academies', 'author', 'users')
@@ -151,6 +164,12 @@ class ProjectController extends Controller
             ->get();
         return view('applications.my-applications', compact('projects'));
     }
+
+    /**
+     * cancel if application is denied 
+     * check application status
+     * check if user applied for the project
+     */
 
     public function cancel($id)
     {
@@ -172,6 +191,10 @@ class ProjectController extends Controller
         }
     }
 
+    /**
+     * list applicants data
+     */
+
     public function applicants($id)
     {
         $details = Project::with('users')
@@ -183,6 +206,11 @@ class ProjectController extends Controller
         return view('projects.applicants', compact('details'));
     }
 
+    /**
+     * update project status
+     * table (projects) 
+     * column (is_assembled)
+     */
     public function assemble($id)
     {
         $project = Project::find($id);
