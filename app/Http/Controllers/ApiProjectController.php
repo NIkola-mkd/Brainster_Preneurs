@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class ApiProjectController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all projects 
      *
+     * filter projects by academy
+     * pagination
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-
         $category = $request->category;
 
         if ($request->ajax()) {
@@ -46,11 +47,17 @@ class ApiProjectController extends Controller
         }
     }
 
+    /**
+     * send message via ajax
+     * validate message input 
+     *email event functionallity
+      @return JSON respond message
+     * */
 
     public function apply(Request $request, $id)
     {
         $request->validate([
-            'message' => 'required'
+            'message' => 'required|max:300'
         ]);
         $user = Auth::user()->id;
         $msg = $request->message;
@@ -75,6 +82,14 @@ class ApiProjectController extends Controller
 
         return response()->json(['error' => true, 'message' => 'Please try again']);
     }
+
+    /**
+     * accept user application
+     * update query (application status i user_project table) 
+     *
+     @ retutn JSON status message
+     */
+
 
     public function accept(Request $request, $id)
     {

@@ -21,38 +21,26 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', [ProjectController::class, 'all'])->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [ProjectController::class, 'all'])->name('dashboard');
+    Route::get('/profile/my-profile', [UserController::class, 'index']);
+    Route::post('/profile/profile-update', [UserController::class, 'update'])->name('profile-update');
+});
 
-Route::get('/profile/my-profile', [UserController::class, 'index'])->middleware(['auth']);
-Route::post('/profile/profile-update', [UserController::class, 'update'])->middleware(['auth'])->name('profile-update');
+Route::middleware(['completed'])->group(function () {
 
-Route::get('/projects/my-projects', [ProjectController::class, 'index'])
-    ->middleware(['auth'])->name('my-projects');
+    Route::get('/projects/my-projects', [ProjectController::class, 'index'])->name('my-projects');
+    Route::get('/projects/create-project', [ProjectController::class, 'create']);
+    Route::get('/projects/{id}/edit-project', [ProjectController::class, 'edit'])->name('edit-project');
+    Route::get('/projects/{id}/delete', [ProjectController::class, 'destroy'])->name('delete-project');
+    Route::post('/profile/create-project', [ProjectController::class, 'store'])->name('project-create');
+    Route::put('/profile/{id}/edit-project', [ProjectController::class, 'update'])->name('project-edit');
+    Route::get('/applications/my-applications', [ProjectController::class, 'myApplications']);
+    Route::get('/applications/{id}/my-applications', [ProjectController::class, 'cancel'])->name('cancel');
+    Route::get('/projects/{id}/applicants', [ProjectController::class, 'applicants'])->name('applicants');
+    Route::put('/projects/{id}/applicants', [ProjectController::class, 'assemble'])->name('project-assemble');
+    Route::get('/applicants/{id}/{name}-{surname}', [UserController::class, 'show'])->name('applicant-profile');
+});
 
-Route::get('/projects/create-project', [ProjectController::class, 'create'])->middleware(['auth']);
-
-Route::get('/projects/{id}/edit-project', [ProjectController::class, 'edit'])->middleware(['auth'])->name('edit-project');
-
-Route::get('/projects/{id}/delete', [ProjectController::class, 'destroy'])->middleware(['auth'])->name('delete-project');
-
-Route::post('/profile/create-project', [ProjectController::class, 'store'])->middleware(['auth'])
-    ->name('project-create');
-
-
-Route::put('/profile/{id}/edit-project', [ProjectController::class, 'update'])->middleware(['auth'])
-    ->name('project-edit');
-
-
-Route::get('/applications/my-applications', [ProjectController::class, 'myApplications'])->middleware('auth');
-
-Route::get('/applications/{id}/my-applications', [ProjectController::class, 'cancel'])->middleware('auth')->name('cancel');
-
-Route::get('/projects/{id}/applicants', [ProjectController::class, 'applicants'])->middleware('auth')->name('applicants');
-
-Route::put('/projects/{id}/applicants', [ProjectController::class, 'assemble'])->middleware(['auth'])
-    ->name('project-assemble');
-
-
-Route::get('/applicants/{id}/{name}-{surname}', [UserController::class, 'show'])->middleware('auth')->name('applicant-profile');
 
 require __DIR__ . '/auth.php';
