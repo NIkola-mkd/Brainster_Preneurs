@@ -118,7 +118,7 @@ function projects(data) {
             btn = `  </div>
                         </div>
                         </div>
-                        <div class="col-4 mt-5 ">
+                        <div class="col-md-4 col-12 mt-5 ">
                            <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
                                 <button id = 'apply' class = 'btn btn-success px-lg-5 px-2 applyBtn' disabled>I AM IN</button>
                             </div>
@@ -133,7 +133,7 @@ function projects(data) {
                     btn = `  </div>
                         </div>
                         </div>
-                        <div class="col-4 mt-5 ">
+                        <div class="col-md-4 col-12 mt-5 ">
                            <div class = 'd-grid gap-2 d-md-flex justify-content-md-end'>
                                 <button id = 'apply' class = 'btn btn-success px-lg-5 px-2 applyBtn' disabled>I AM IN</button>
                             </div>
