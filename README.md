@@ -1,66 +1,87 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Brainster Preneurs
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+#### To setup the project please follow this instructions:
 
-## About Laravel
+1. Clone this repo:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```
+cd/destination_folder (on your local machine)
+git clone {repo_rul}
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. Create a database on your local machine 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. Generate key:
 
-## Learning Laravel
+```
+php artisan key:generate
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+4. Rename `.env.example` file to `.env`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+5. Open `.env` file and setup the following variables:
 
-## Laravel Sponsors
+```
+DB_DATABASE= {your database name}
+DB_USERNAME= {db username}
+DB_PASSWORD= {db password}
+```
+6. Create a profile on `https://mailtrap.io/`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+7. Create new project and inbox
 
-### Premium Partners
+8. In `Integrations` select `Laravel 7+` and copy values
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+9. Paste values in `.env`
 
-## Contributing
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME= {generated username}
+MAIL_PASSWORD= {generated password}
+MAIL_ENCRYPTION=tls
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+10. In order to create db tables, run this command:
 
-## Code of Conduct
+```
+php artisan migrate
+```
+11. Seed data (academies, skills) running this command:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+php artisan db:seed
+```
 
-## Security Vulnerabilities
+12. Run the following commands to optimize the asset:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+npm install
+npm run dev
+```
 
-## License
+13. Star application using this command:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+php artisan serve
+```
+
+14. Follow the generated link and start using application
+
+<hr>
+
+##### Notes
+
+- The initial page is `login` page
+- To create a new account please folow the `register here` link
+- All inputs are required
+- Once you create a new user, please complete your profile (add image an skills)
+- You can not acces other routes, if your profile is not completed
+- Projects on `dasborad` page are generated via API, so be aware that `ajax.js` is included
+- On `dasborad` page, only projects that are not assembled are listed
+- You can see your own projects in `My Projects`
+- You can see youar applications and status in `My applications`
+- You can delete only denied projects
+- On `my-applications` page, you can see your applicants by clicking on the right applicant circle
+- Before you apply for project, enter message as messages are required
