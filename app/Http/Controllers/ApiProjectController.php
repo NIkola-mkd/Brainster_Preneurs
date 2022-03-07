@@ -65,8 +65,8 @@ class ApiProjectController extends Controller
 
         $project = Project::find($id);
 
-        $project_author = Project::find($id)->with('author')->first();
-        $applicant = User::find($user)->with('skills')->first();
+        $project_author = Project::with('author')->find($id);
+        $applicant = User::with('skills')->find($user);
         $email = $project_author->author->email;
         $title = $project_author->title;
         $skills = $applicant->skills->pluck('name');
