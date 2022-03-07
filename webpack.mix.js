@@ -1,4 +1,6 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
+
+mix.disableNotifications();
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +13,19 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js("resources/js/app.js", "public/js")
+    .postCss("resources/css/app.css", "public/css")
+    .postCss("resources/css/login.css", "public/css")
+    .postCss("resources/css/custom.css", "public/css")
+    .postCss("resources/css/register.css", "public/css")
+    .postCss("resources/css/profile.css", "public/css")
+    .postCss("resources/css/dashboard.css", "public/css")
+    .postCss("resources/css/my-projects.css", "public/css")
+    .postCss("resources/css/create_edit_projects.css", "public/css")
+    .postCss("resources/css/my-applications.css", "public/css")
+    .postCss("resources/css/applicants.css", "public/css")
+    .postCss("resources/css/applicant_profile.css", "public/css")
+    .js("resources/js/textarea.js", "public/js")
+    .js("resources/js/readMoreLess.js", "public/js")
+    .js("resources/js/ajax.js", "public/js")
+    .js("resources/js/applicants.js", "public/js");

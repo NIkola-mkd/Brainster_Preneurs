@@ -1,0 +1,147 @@
+body {
+    background: url("../bg-images/3.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+a:hover {
+    color: #dd7f1e !important;
+}
+
+.card-image {
+    position: absolute;
+    top: -45 !important;
+}
+.menu-responsive {
+    display: none;
+}
+.project-image {
+    border-radius: 50%;
+    width: 70;
+    height: 70;
+    border: white 4px solid;
+}
+
+.academies-circles {
+    border-radius: 250px 250px 0 0;
+    font-size: 0.7rem;
+}
+
+.applicants {
+    border-radius: 50%;
+    position: absolute;
+    top: -40;
+    right: -30;
+}
+
+.btn-outline-success {
+    border: none !important;
+    border-color: unset !important;
+    background-color: white !important;
+    color: black;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #48695c !important;
+    border-color: #48695c !important;
+}
+.btn-check:active + .btn-outline-success,
+.btn-check:checked + .btn-outline-success,
+.btn-outline-success.active,
+.btn-outline-success.dropdown-toggle.show,
+.btn-outline-success:active {
+    color: #fff;
+    background-color: #48695c !important;
+    border-color: #48695c !important;
+}
+.btn-group > .btn-group:not(:first-child) > .btn,
+.btn-group > .btn:nth-child(n + 3),
+.btn-group > :not(.btn-check) + .btn {
+    color: white !important;
+    background-color: #48695c !important;
+}
+.font-applicants {
+    font-size: 0.8rem;
+}
+
+.card-footer {
+    border-top: none !important;
+}
+
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+
+.assembled {
+    width: 50;
+    height: 50;
+    position: absolute;
+    top: 190;
+    right: 70;
+}
+
+.my-7 {
+    margin-top: 7rem;
+}
+
+.filter-width {
+    width: 110;
+}
+.btn-applicants {
+    background-color: #48695c !important;
+    color: white !important;
+}
+
+.btn-success {
+    background-color: #48695c !important;
+    color: white !important;
+}
+
+.btn-success.disabled,
+.btn-success:disabled {
+    background-color: #949d99 !important;
+    color: white !important;
+    cursor: unset !important;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    background-color: #dd7f1e;
+    color: #fff;
+    border-color: unset;
+}
+.page-link {
+    color: #dd7f1e;
+}
+.page-link:hover {
+    background-color: #dd7f1e;
+    color: white !important;
+}
+.fixed {
+    position: fixed;
+}
+
+.icon {
+    width: 50;
+    height: 50;
+}
+
+.swal-button {
+    background-color: #48695c !important;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+    .menu-responsive {
+        display: block;
+    }
+}

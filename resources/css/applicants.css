@@ -1,0 +1,43 @@
+body {
+    background-color: #f6f6f6;
+    overflow-x: hidden;
+}
+a:hover {
+    color: #dd7f1e !important;
+}
+
+.icon {
+    width: 50;
+    height: 50;
+}
+
+.btn-warning {
+    border: none !important;
+    border-color: unset !important;
+    background-color: #dd7f1e !important;
+    color: white !important;
+}
+
+.icon-add {
+    width: 25;
+    height: 25;
+}
+
+.avatar-applicants {
+    border-radius: 50%;
+    width: 75;
+    height: 75;
+    border: white 4px solid;
+    position: absolute;
+    top: -45 !important;
+}
+
+.accepted {
+    background-color: #ccd3da;
+}
+
+@media (max-width: 768) {
+    body {
+        overflow-x: none;
+    }
+}

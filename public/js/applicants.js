@@ -1,0 +1,1 @@
+$((function(){$(".apply").on("click",(function(){!function(e){$.ajax({url:"/api/accept/"+$("#projectID").val(),method:"PUT",data:{_token:$('meta[name="csrf-token"]').attr("content"),user_id:e},success:function(e){console.log(e)},error:function(e){console.log(e.responseJSON.errors.message),$("#error").html(e.responseJSON.errors.message)}})}($(this).attr("id"))}))}));
