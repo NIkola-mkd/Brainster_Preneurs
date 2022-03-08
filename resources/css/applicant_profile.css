@@ -1,10 +1,18 @@
 body {
     background-color: #f6f6f6;
+    overflow-x: hidden !important;
 }
 
 .avatar-applicants {
     border-radius: 50%;
-    width: 75;
-    height: 75;
+    width: 250;
+    height: 250;
     border: white 4px solid;
+}
+
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
 }
