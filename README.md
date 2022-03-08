@@ -9,7 +9,7 @@ cd/destination_folder (on your local machine)
 git clone {repo_rul}
 ```
 
-2. Create a database on your local machine
+2. Create a database on your local machine 
 
 3. Generate key:
 
@@ -26,7 +26,6 @@ DB_DATABASE= {your database name}
 DB_USERNAME= {db username}
 DB_PASSWORD= {db password}
 ```
-
 6. Create a profile on `https://mailtrap.io/`
 
 7. Create new project and inbox
@@ -49,7 +48,6 @@ MAIL_ENCRYPTION=tls
 ```
 php artisan migrate
 ```
-
 11. Seed data (academies, skills) running this command:
 
 ```
@@ -75,15 +73,15 @@ php artisan serve
 
 ##### Notes
 
--   The initial page is `login` page
--   To create a new account please folow the `register here` link
--   All inputs are required
--   Once you create a new user, please complete your profile (add image an skills)
--   You can not acces other routes, if your profile is not completed
--   Projects on `dasborad` page are generated via API, so be aware that `ajax.js` is included
--   On `dasborad` page, only projects that are not assembled are listed
--   You can see your own projects in `My Projects`
--   You can see youar applications and status in `My applications`
--   You can delete only denied projects
--   On `my-applications` page, you can see your applicants by clicking on the right applicant circle
--   Before you apply for project, enter message as messages are required
+- The initial page is `login` page
+- To create a new account please folow the `register here` link
+- All inputs are required
+- Once you create a new user, please complete your profile (add image an skills)
+- You can not acces other routes, if your profile is not completed
+- Projects on `dasborad` page are generated via API, so be aware that `ajax.js` is included
+- On `dasborad` page, only projects that are not assembled are listed
+- You can see your own projects in `My Projects`
+- You can see youar applications and status in `My applications`
+- You can delete only denied projects
+- On `my-applications` page, you can see your applicants by clicking on the right applicant circle
+- Before you apply for project, enter message as messages are required
